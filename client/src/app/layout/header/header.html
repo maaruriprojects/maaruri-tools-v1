@@ -1,0 +1,254 @@
+<header class="mt-header">
+  <div class="mt-header__inner mt-container">
+    <!-- Logo -->
+    <a class="mt-header__logo" routerLink="/" (click)="closeMobileMenu()">
+      @if (logoUrl()) {
+        <img [src]="logoUrl()" [alt]="siteName" class="mt-header__logo-img" />
+      } @else {
+        <span class="mt-header__logo-text">
+          <span class="mt-header__logo-mark">M</span>
+          <span class="mt-header__logo-name">{{ siteName }}</span>
+        </span>
+      }
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="mt-header__nav d-none d-lg-flex">
+      <!-- Tools dropdown -->
+      <div class="mt-tools-nav">
+        <button
+          class="mt-header__nav-link mt-header__nav-link--tools"
+          (click)="toggleToolsDropdown()"
+          [class.is-open]="toolsDropdownOpen()"
+        >
+          Tools
+          <svg class="mt-header__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        @if (toolsDropdownOpen()) {
+          <div class="mt-tools-dropdown">
+            <div class="mt-tools-dropdown__grid">
+              <a class="mt-tools-dropdown__item" routerLink="/time-date-tools" (click)="closeToolsDropdown()">
+                <span class="mt-tools-dropdown__icon">🕐</span>
+                <span class="mt-tools-dropdown__label">Time & Date Tools</span>
+              </a>
+              <a class="mt-tools-dropdown__item" routerLink="/health-fitness" (click)="closeToolsDropdown()">
+                <span class="mt-tools-dropdown__icon">❤️</span>
+                <span class="mt-tools-dropdown__label">Health & Fitness</span>
+              </a>
+              <a class="mt-tools-dropdown__item" routerLink="/finance-money-tools" (click)="closeToolsDropdown()">
+                <span class="mt-tools-dropdown__icon">💰</span>
+                <span class="mt-tools-dropdown__label">Finance & Money</span>
+              </a>
+              <a class="mt-tools-dropdown__item" routerLink="/work-productivity" (click)="closeToolsDropdown()">
+                <span class="mt-tools-dropdown__icon">💼</span>
+                <span class="mt-tools-dropdown__label">Work & Productivity</span>
+              </a>
+              <a class="mt-tools-dropdown__item" routerLink="/converters-calculators" (click)="closeToolsDropdown()">
+                <span class="mt-tools-dropdown__icon">🧮</span>
+                <span class="mt-tools-dropdown__label">Converters & Calculators</span>
+              </a>
+              <a class="mt-tools-dropdown__item" routerLink="/everyday-practical-tools" (click)="closeToolsDropdown()">
+                <span class="mt-tools-dropdown__icon">🏠</span>
+                <span class="mt-tools-dropdown__label">Everyday & Practical</span>
+              </a>
+              <a class="mt-tools-dropdown__item" routerLink="/creative-design-tools" (click)="closeToolsDropdown()">
+                <span class="mt-tools-dropdown__icon">🎨</span>
+                <span class="mt-tools-dropdown__label">Creative & Design</span>
+              </a>
+              <a class="mt-tools-dropdown__item" routerLink="/development-web-tools" (click)="closeToolsDropdown()">
+                <span class="mt-tools-dropdown__icon">💻</span>
+                <span class="mt-tools-dropdown__label">Development & Web</span>
+              </a>
+              <a class="mt-tools-dropdown__item" routerLink="/travel-transportation" (click)="closeToolsDropdown()">
+                <span class="mt-tools-dropdown__icon">✈️</span>
+                <span class="mt-tools-dropdown__label">Travel & Transportation</span>
+              </a>
+              <a class="mt-tools-dropdown__item" routerLink="/document-language-tools" (click)="closeToolsDropdown()">
+                <span class="mt-tools-dropdown__icon">📄</span>
+                <span class="mt-tools-dropdown__label">Document & Language</span>
+              </a>
+              <a class="mt-tools-dropdown__item" routerLink="/personal-social-tools" (click)="closeToolsDropdown()">
+                <span class="mt-tools-dropdown__icon">👥</span>
+                <span class="mt-tools-dropdown__label">Personal & Social</span>
+              </a>
+            </div>
+            <a class="mt-tools-dropdown__recent" routerLink="/recent" (click)="closeToolsDropdown()">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 1V7L11 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              Recent Tools
+            </a>
+          </div>
+        }
+      </div>
+
+      @for (item of navItems; track item.link) {
+        <a class="mt-header__nav-link" [routerLink]="item.link">{{ item.label }}</a>
+      }
+    </nav>
+
+    <!-- Search bar (desktop) -->
+    <div class="mt-header__search d-none d-md-block">
+      <div class="mt-search">
+        <svg class="mt-search__icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M11 11L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <input
+          type="text"
+          class="mt-search__input"
+          placeholder="Search tools..."
+          [ngModel]="searchQuery()"
+          (ngModelChange)="onSearchInput($event)"
+          (focus)="onSearchFocus()"
+          (blur)="onSearchBlur()"
+        />
+        @if (searchFocused() && searchResults().length > 0) {
+          <div class="mt-search__results">
+            @for (result of searchResults(); track result.url) {
+              <button
+                class="mt-search__result"
+                [class.mt-search__result--tool]="result.type === 'tool'"
+                [class.mt-search__result--category]="result.type === 'category'"
+                (mousedown)="onSearchResultClick(result.url)"
+              >
+                <span class="mt-search__result-type">
+                  @if (result.type === 'tool') { 🔧 } @else { 📁 }
+                </span>
+                <span class="mt-search__result-label">{{ result.label }}</span>
+                @if (result.type === 'tool') {
+                  <span class="mt-search__result-category">{{ result.categorySlug }}</span>
+                }
+              </button>
+            }
+          </div>
+        }
+        @if (searchFocused() && searchQuery().length > 0 && searchResults().length === 0) {
+          <div class="mt-search__results">
+            <div class="mt-search__no-results">No tools found for "{{ searchQuery() }}"</div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Country selector -->
+    <div class="mt-country-selector">
+      <button class="mt-country-selector__btn" (click)="toggleCountryPopup()" [class.is-open]="countryPopupOpen()">
+        <span class="mt-country-selector__flag">{{ getCurrentCountryFlag() }}</span>
+        <span class="mt-country-selector__code d-none d-sm-inline">{{ selectedCountry() }}</span>
+        <svg class="mt-country-selector__chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+          <path d="M2.5 3.75L5 6.25L7.5 3.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      @if (countryPopupOpen()) {
+        <div class="mt-country-popup">
+          <div class="mt-country-popup__header">
+            <h3 class="mt-country-popup__title">Select Country</h3>
+            <button class="mt-country-popup__close" (click)="closeCountryPopup()">×</button>
+          </div>
+
+          <div class="mt-country-popup__countries">
+            @for (locale of locales(); track locale.countryCode) {
+              <label class="mt-country-popup__country" [class.is-selected]="tempSelectedCountry() === locale.countryCode">
+                <input
+                  type="checkbox"
+                  [checked]="tempSelectedCountry() === locale.countryCode"
+                  (change)="onCountrySelect(locale.countryCode)"
+                />
+                <span class="mt-country-popup__flag">{{ locale.flag }}</span>
+                <span class="mt-country-popup__name">{{ locale.countryName }}</span>
+                <span class="mt-country-popup__currency">{{ locale.currencySymbol }}</span>
+              </label>
+            }
+          </div>
+
+          <div class="mt-country-popup__languages">
+            <label class="mt-country-popup__lang-label">Language</label>
+            <select
+              class="mt-country-popup__lang-select"
+              [ngModel]="tempSelectedLanguage()"
+              (ngModelChange)="onLanguageSelect($event)"
+            >
+              @for (lang of currentLanguages(); track lang) {
+                <option [value]="lang">{{ getLanguageName(lang) }}</option>
+              }
+            </select>
+          </div>
+
+          <button class="mt-country-popup__apply" (click)="applyCountrySelection()">Apply</button>
+        </div>
+      }
+    </div>
+
+    <!-- Mobile menu toggle -->
+    <button class="mt-header__mobile-toggle d-lg-none" (click)="toggleMobileMenu()" [class.is-open]="mobileMenuOpen()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  @if (mobileMenuOpen()) {
+    <div class="mt-mobile-menu d-lg-none">
+      <!-- Search in mobile menu -->
+      <div class="mt-mobile-menu__search">
+        <div class="mt-search">
+          <svg class="mt-search__icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M11 11L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <input
+            type="text"
+            class="mt-search__input"
+            placeholder="Search tools..."
+            [ngModel]="searchQuery()"
+            (ngModelChange)="onSearchInput($event)"
+            (focus)="onSearchFocus()"
+            (blur)="onSearchBlur()"
+          />
+          @if (searchFocused() && searchResults().length > 0) {
+            <div class="mt-search__results">
+              @for (result of searchResults(); track result.url) {
+                <button
+                  class="mt-search__result"
+                  (mousedown)="onSearchResultClick(result.url); closeMobileMenu()"
+                >
+                  <span class="mt-search__result-type">
+                    @if (result.type === 'tool') { 🔧 } @else { 📁 }
+                  </span>
+                  <span class="mt-search__result-label">{{ result.label }}</span>
+                </button>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <nav class="mt-mobile-menu__nav">
+        <a class="mt-mobile-menu__link" routerLink="/" (click)="closeMobileMenu()">Home</a>
+        <div class="mt-mobile-menu__section">
+          <span class="mt-mobile-menu__section-title">Tools</span>
+          <a class="mt-mobile-menu__sublink" routerLink="/time-date-tools" (click)="closeMobileMenu()">Time & Date</a>
+          <a class="mt-mobile-menu__sublink" routerLink="/health-fitness" (click)="closeMobileMenu()">Health & Fitness</a>
+          <a class="mt-mobile-menu__sublink" routerLink="/finance-money-tools" (click)="closeMobileMenu()">Finance & Money</a>
+          <a class="mt-mobile-menu__sublink" routerLink="/work-productivity" (click)="closeMobileMenu()">Work & Productivity</a>
+          <a class="mt-mobile-menu__sublink" routerLink="/converters-calculators" (click)="closeMobileMenu()">Converters & Calculators</a>
+          <a class="mt-mobile-menu__sublink" routerLink="/everyday-practical-tools" (click)="closeMobileMenu()">Everyday & Practical</a>
+          <a class="mt-mobile-menu__sublink" routerLink="/creative-design-tools" (click)="closeMobileMenu()">Creative & Design</a>
+          <a class="mt-mobile-menu__sublink" routerLink="/development-web-tools" (click)="closeMobileMenu()">Development & Web</a>
+          <a class="mt-mobile-menu__sublink" routerLink="/travel-transportation" (click)="closeMobileMenu()">Travel & Transportation</a>
+          <a class="mt-mobile-menu__sublink" routerLink="/document-language-tools" (click)="closeMobileMenu()">Document & Language</a>
+          <a class="mt-mobile-menu__sublink" routerLink="/personal-social-tools" (click)="closeMobileMenu()">Personal & Social</a>
+        </div>
+        <a class="mt-mobile-menu__link" routerLink="/about" (click)="closeMobileMenu()">About Us</a>
+        <a class="mt-mobile-menu__link" routerLink="/contact" (click)="closeMobileMenu()">Contact Us</a>
+        <a class="mt-mobile-menu__link" routerLink="/opportunities" (click)="closeMobileMenu()">Opportunities</a>
+      </nav>
+    </div>
+  }
+</header>
