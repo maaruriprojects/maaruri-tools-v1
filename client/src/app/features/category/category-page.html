@@ -1,0 +1,130 @@
+@if (category()) {
+  <!-- ── Category header ─────────────────────────────────────── -->
+  <section class="mt-cat-hero">
+    <div class="mt-container">
+      <nav class="mt-cat-breadcrumb">
+        <a routerLink="/">Home</a>
+        <span class="mt-cat-breadcrumb__sep">/</span>
+        <span class="mt-cat-breadcrumb__current">{{ category()!.name }}</span>
+      </nav>
+      <div class="mt-cat-hero__content">
+        <span class="mt-cat-hero__icon">{{ getIcon(category()!.icon) }}</span>
+        <div>
+          <h1 class="mt-cat-hero__title">{{ category()!.name }}</h1>
+          <p class="mt-cat-hero__desc">{{ category()!.description }}</p>
+        </div>
+      </div>
+      <div class="mt-cat-hero__ad">
+        <app-ad-auto slot="0000000000" />
+      </div>
+    </div>
+  </section>
+
+  @if (toolCount() > 0) {
+    <!-- ── Search & filter bar ────────────────────────────────── -->
+    <section class="mt-cat-toolbar">
+      <div class="mt-container">
+        <div class="mt-cat-toolbar__inner">
+          <div class="mt-cat-search">
+            <span class="mt-cat-search__icon">🔍</span>
+            <input
+              type="text"
+              class="mt-cat-search__input"
+              placeholder="Search tools in {{ category()!.name }}..."
+              [ngModel]="searchQuery()"
+              (ngModelChange)="onSearchInput($event)"
+            />
+            @if (searchQuery()) {
+              <button class="mt-cat-search__clear" (click)="clearSearch()" aria-label="Clear search">&times;</button>
+            }
+          </div>
+          <div class="mt-cat-sort">
+            <label class="mt-cat-sort__label">Sort:</label>
+            <select
+              class="mt-cat-sort__select"
+              [ngModel]="sortBy()"
+              (ngModelChange)="onSortChange($event)"
+            >
+              <option value="name">Name (A-Z)</option>
+              <option value="relevance">Relevance</option>
+            </select>
+          </div>
+        </div>
+        <p class="mt-cat-toolbar__count">
+          {{ tools().length }} of {{ toolCount() }} tools
+        </p>
+      </div>
+    </section>
+
+    <!-- ── Tool cards grid ─────────────────────────────────────── -->
+    <section class="mt-cat-tools">
+      <div class="mt-container">
+        @if (tools().length > 0) {
+          <div class="mt-cat-tools__grid">
+            @for (tool of tools(); track tool.id) {
+              <a
+                class="mt-cat-tool-card mt-card"
+                [routerLink]="'/' + category()!.slug + '/' + tool.slug"
+              >
+                <span class="mt-cat-tool-card__icon">{{ getIcon(tool.icon) }}</span>
+                <div class="mt-cat-tool-card__body">
+                  <h3 class="mt-cat-tool-card__name">{{ tool.name }}</h3>
+                  <p class="mt-cat-tool-card__desc">{{ tool.shortDescription }}</p>
+                </div>
+                <span class="mt-cat-tool-card__arrow">&rarr;</span>
+              </a>
+            }
+          </div>
+        } @else {
+          <div class="mt-cat-no-results">
+            <span class="mt-cat-no-results__icon">🔍</span>
+            <h2 class="mt-cat-no-results__title">No tools found</h2>
+            <p class="mt-cat-no-results__text">
+              No tools match "{{ searchQuery() }}" in {{ category()!.name }}.
+            </p>
+            <button class="mt-cat-no-results__btn" (click)="clearSearch()">Clear search</button>
+          </div>
+        }
+      </div>
+    </section>
+  } @else {
+    <!-- ── Empty category: coming soon ─────────────────────────── -->
+    <section class="mt-cat-empty">
+      <div class="mt-container">
+        <div class="mt-cat-empty__inner">
+          <div class="mt-cat-empty__icon">{{ getIcon(category()!.icon) }}</div>
+          <h2 class="mt-cat-empty__title">Tools Coming Soon</h2>
+          <p class="mt-cat-empty__text">
+            We're working on tools for {{ category()!.name }}. Check back soon!
+          </p>
+          <a class="mt-cat-empty__link" routerLink="/">Browse other categories</a>
+        </div>
+      </div>
+    </section>
+  }
+
+  <!-- ── Bottom banner ad ─────────────────────────────────────── -->
+  <div class="mt-cat-bottom-ad">
+    <div class="mt-container">
+      <app-ad-banner slot="0000000000" />
+    </div>
+  </div>
+} @else if (loaded()) {
+  <!-- ── Category not found ───────────────────────────────────── -->
+  <section class="mt-cat-not-found">
+    <div class="mt-container">
+      <div class="mt-cat-not-found__inner">
+        <span class="mt-cat-not-found__icon">🔍</span>
+        <h1 class="mt-cat-not-found__title">Category Not Found</h1>
+        <p class="mt-cat-not-found__text">This category doesn't exist.</p>
+        <a class="mt-cat-not-found__link" routerLink="/">Back to home</a>
+      </div>
+    </div>
+  </section>
+} @else {
+  <section class="mt-cat-loading">
+    <div class="mt-container">
+      <p class="mt-text-muted">Loading...</p>
+    </div>
+  </section>
+}
