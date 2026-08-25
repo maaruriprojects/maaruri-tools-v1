@@ -5,6 +5,7 @@ import { ToolShell } from './features/tools/tool-shell/tool-shell';
 import { AboutPage } from './features/pages/about-page';
 import { ContactPage } from './features/pages/contact-page';
 import { OpportunitiesPage } from './features/pages/opportunities-page';
+import { NotFoundPage } from './features/pages/not-found-page';
 
 export const routes: Routes = [
   {
@@ -33,6 +34,11 @@ export const routes: Routes = [
     title: 'Opportunities — Maaruri Tools',
   },
   {
+    path: '404',
+    component: NotFoundPage,
+    title: 'Page Not Found — Maaruri Tools',
+  },
+  {
     path: ':categorySlug/:toolSlug',
     component: ToolShell,
     title: 'Tool — Maaruri Tools',
@@ -42,5 +48,5 @@ export const routes: Routes = [
     component: CategoryPage,
     title: 'Category — Maaruri Tools',
   },
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: '404' },
 ];
