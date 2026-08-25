@@ -1,13 +1,7 @@
 import { Component, inject, signal, computed, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { Category, Tool } from '../../shared/models';
-
-interface RegistryFile {
-  categories: Category[];
-  tools: Tool[];
-}
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ToolRegistryService } from '../../core/config/tool-registry.service';
 
 const ICONS: Record<string, string> = {
   'clock': '🕐',
@@ -62,8 +56,19 @@ const ICONS: Record<string, string> = {
           }
         </div>
       </div>
+    } @else if (loaded()) {
+      <div class="mt-category">
+        <div class="mt-container">
+          <div class="mt-category__empty">
+            <div class="mt-category__empty-icon">🔍</div>
+            <h2 class="mt-category__empty-title">Category Not Found</h2>
+            <p class="mt-category__empty-text">This category doesn't exist.</p>
+            <a class="mt-category__empty-link" routerLink="/">Back to home</a>
+          </div>
+        </div>
+      </div>
     } @else {
-      <div class="mt-category mt-category--loading">
+      <div class="mt-category">
         <div class="mt-container">
           <p class="mt-text-muted">Loading...</p>
         </div>
@@ -167,31 +172,19 @@ const ICONS: Record<string, string> = {
 })
 export class CategoryPage implements OnInit {
   private readonly route = inject(ActivatedRoute);
-  private readonly http = inject(HttpClient);
+  private readonly registry = inject(ToolRegistryService);
 
-  private readonly _categories = signal<Category[]>([]);
-  private readonly _tools = signal<Tool[]>([]);
   private readonly _categorySlug = signal<string>('');
+  readonly loaded = signal<boolean>(false);
 
-  readonly category = computed(() =>
-    this._categories().find((c) => c.slug === this._categorySlug()) ?? null,
-  );
-
-  readonly tools = computed(() =>
-    this._tools().filter((t) => t.categorySlug === this._categorySlug()),
-  );
-
-  constructor() {
-    this.http.get<RegistryFile>('assets/data/tool-registry.json').subscribe((data) => {
-      this._categories.set(data.categories);
-      this._tools.set(data.tools);
-    });
-  }
+  readonly category = computed(() => this.registry.getCategory(this._categorySlug()));
+  readonly tools = computed(() => this.registry.getToolsForCategory(this._categorySlug()));
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this._categorySlug.set(params.get('categorySlug') ?? '');
     });
+    this.registry.load().subscribe(() => this.loaded.set(true));
   }
 
   getIcon(name: string): string {

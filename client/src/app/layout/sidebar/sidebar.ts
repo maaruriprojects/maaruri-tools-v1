@@ -1,13 +1,7 @@
-import { Component, inject, signal, computed, HostListener } from '@angular/core';
+import { Component, inject, signal, computed, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { Category, Tool } from '../../shared/models';
-
-interface RegistryFile {
-  categories: Category[];
-  tools: Tool[];
-}
+import { ToolRegistryService } from '../../core/config/tool-registry.service';
 
 const ICONS: Record<string, string> = {
   'clock': '🕐',
@@ -29,30 +23,30 @@ const ICONS: Record<string, string> = {
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
 })
-export class Sidebar {
-  private readonly http = inject(HttpClient);
+export class Sidebar implements OnInit {
+  private readonly registry = inject(ToolRegistryService);
   private readonly router = inject(Router);
 
-  private readonly _categories = signal<Category[]>([]);
-  private readonly _tools = signal<Tool[]>([]);
-  readonly categories = this._categories.asReadonly();
+  readonly categories = this.registry.categories;
 
   readonly expanded = signal<boolean>(false);
   readonly mobileOpen = signal<boolean>(false);
+  readonly loadError = signal<boolean>(false);
 
   readonly toolCounts = computed(() => {
-    const tools = this._tools();
+    const tools = this.registry.tools();
     const counts: Record<string, number> = {};
-    for (const cat of this._categories()) {
+    for (const cat of this.categories()) {
       counts[cat.slug] = tools.filter((t) => t.categorySlug === cat.slug).length;
     }
     return counts;
   });
 
-  constructor() {
-    this.http.get<RegistryFile>('assets/data/tool-registry.json').subscribe((data) => {
-      this._categories.set(data.categories);
-      this._tools.set(data.tools);
+  ngOnInit(): void {
+    this.registry.load().subscribe((result) => {
+      if (result === null && this.categories().length === 0) {
+        this.loadError.set(true);
+      }
     });
   }
 

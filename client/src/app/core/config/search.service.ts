@@ -1,6 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable, tap, catchError, of } from 'rxjs';
 import { SearchEntry } from '../../shared/models';
 
 interface SearchIndexFile {
@@ -20,8 +20,12 @@ export class SearchService {
   readonly entries = this._entries.asReadonly();
 
   load(): Observable<SearchIndexFile> {
-    return this.http.get<SearchIndexFile>('assets/data/search-index.json').pipe(
+    return this.http.get<SearchIndexFile>('/assets/data/search-index.json').pipe(
       tap((data) => this._entries.set(data.entries)),
+      catchError((err) => {
+        console.error('Failed to load search index:', err);
+        return of({ entries: [] } as SearchIndexFile);
+      }),
     );
   }
 

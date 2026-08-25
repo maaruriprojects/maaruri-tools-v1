@@ -1,6 +1,6 @@
 import { Injectable, inject, signal, effect } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable, tap, catchError, of } from 'rxjs';
 import { Locale } from '../../shared/models';
 
 interface LocalesFile {
@@ -34,12 +34,16 @@ export class LocaleService {
   readonly currencySymbol = signal<string>('₹');
   readonly currencyCode = signal<string>('INR');
 
-  load(): Observable<LocalesFile> {
-    return this.http.get<LocalesFile>('assets/data/locales.json').pipe(
+  load(): Observable<LocalesFile | null> {
+    return this.http.get<LocalesFile>('/assets/data/locales.json').pipe(
       tap((data) => {
         this._locales.set(data.locales);
         this._languageNames.set(data.languages);
         this.applyDefaults();
+      }),
+      catchError((err) => {
+        console.error('Failed to load locales:', err);
+        return of(null);
       }),
     );
   }
