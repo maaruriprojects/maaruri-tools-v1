@@ -1,0 +1,104 @@
+<!-- ── Hero section ─────────────────────────────────────────── -->
+<section class="mt-home-hero">
+  <div class="mt-container">
+    <div class="mt-home-hero__inner">
+      <div class="mt-home-hero__text">
+        <span class="mt-home-hero__badge">{{ stats().totalTools }}+ tools across {{ stats().totalCategories }} categories</span>
+        <h1 class="mt-home-hero__title">
+          Free Online Tools for
+          <span class="mt-home-hero__title-accent">Everyday Tasks</span>
+        </h1>
+        <p class="mt-home-hero__subtitle">
+          Calculators, converters, timers, clocks, and more — fast, private, and
+          works directly in your browser. No signup, no download.
+        </p>
+        <div class="mt-home-hero__actions">
+          <a class="mt-home-hero__cta" routerLink="/time-date-tools">Explore Tools</a>
+          <a class="mt-home-hero__link" routerLink="/about">Learn More</a>
+        </div>
+      </div>
+      <div class="mt-home-hero__ad">
+        <app-ad-auto slot="0000000000" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SEO intro block ──────────────────────────────────────── -->
+<section class="mt-home-intro">
+  <div class="mt-container">
+    <div class="mt-home-intro__text">
+      <h2 class="mt-home-intro__heading">Your Toolbox for Everything</h2>
+      <p class="mt-home-intro__body">
+        Maaruri Tools brings together a growing collection of free online utility tools —
+        from <strong>age calculators</strong> and <strong>BMI calculators</strong> to
+        <strong>digital clocks</strong>, <strong>word counters</strong>, <strong>height converters</strong>,
+        and <strong>auto loan calculators</strong>. Every tool runs entirely in your browser,
+        so your data never leaves your device. No accounts, no downloads, no clutter —
+        just open a page and get your answer instantly.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Category grid ───────────────────────────────────────── -->
+<section class="mt-home-categories">
+  <div class="mt-container">
+    <h2 class="mt-home-section-title">Browse by Category</h2>
+    <p class="mt-home-section-subtitle">11 categories covering everything from time and health to finance and productivity.</p>
+
+    <div class="mt-home-categories__grid">
+      @for (category of categories(); track category.slug) {
+        <a
+          class="mt-home-cat-card mt-card"
+          [routerLink]="'/' + category.slug"
+          [class.mt-home-cat-card--empty]="getToolCount(category.slug) === 0"
+        >
+          <span class="mt-home-cat-card__icon">{{ getIcon(category.icon) }}</span>
+          <div class="mt-home-cat-card__body">
+            <h3 class="mt-home-cat-card__name">{{ category.name }}</h3>
+            <p class="mt-home-cat-card__desc">{{ category.description }}</p>
+          </div>
+          @if (getToolCount(category.slug) > 0) {
+            <span class="mt-home-cat-card__count">{{ getToolCount(category.slug) }}</span>
+          } @else {
+            <span class="mt-home-cat-card__soon">Coming Soon</span>
+          }
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Featured tools ──────────────────────────────────────── -->
+@if (featuredTools().length > 0) {
+  <section class="mt-home-featured">
+    <div class="mt-container">
+      <h2 class="mt-home-section-title">Featured Tools</h2>
+      <p class="mt-home-section-subtitle">Quick access to our most popular free online tools.</p>
+
+      <div class="mt-home-featured__grid">
+        @for (tool of featuredTools(); track tool.id) {
+          <a
+            class="mt-home-tool-card mt-card"
+            [routerLink]="'/' + tool.categorySlug + '/' + tool.slug"
+          >
+            <span class="mt-home-tool-card__icon">{{ getIcon(tool.icon) }}</span>
+            <div class="mt-home-tool-card__body">
+              <h3 class="mt-home-tool-card__name">{{ tool.name }}</h3>
+              <p class="mt-home-tool-card__desc">{{ tool.shortDescription }}</p>
+            </div>
+            <span class="mt-home-tool-card__arrow">&rarr;</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+}
+
+<!-- ── Bottom banner ad ─────────────────────────────────────── -->
+<div class="mt-home-bottom-ad">
+  <div class="mt-container">
+    <app-ad-banner slot="0000000000" />
+  </div>
+</div>
