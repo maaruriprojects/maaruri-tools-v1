@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "title": "BMI Calculator — Body Mass Index Calculator",
+    "description": "Calculate your Body Mass Index (BMI) from your height and weight. See which weight category you fall into — underweight, normal, overweight, or obese."
+  },
+  "howItWorks": [
+    "Enter your weight and height in the input fields.",
+    "The calculator uses the BMI formula: weight (kg) divided by height (m) squared.",
+    "Your BMI is matched to a standard category to indicate your weight status."
+  ],
+  "howToUse": [
+    "Enter your weight in kilograms or pounds.",
+    "Enter your height in centimeters, meters, or feet/inches.",
+    "Click Calculate to see your BMI and weight category."
+  ],
+  "faq": [
+    {
+      "question": "What is a healthy BMI range?",
+      "answer": "A BMI between 18.5 and 24.9 is considered normal. Below 18.5 is underweight, 25–29.9 is overweight, and 30 or above is obese."
+    },
+    {
+      "question": "Is BMI accurate for athletes?",
+      "answer": "BMI does not distinguish between muscle and fat. Athletes with high muscle mass may get a high BMI despite being healthy. Use it as a general guide."
+    },
+    {
+      "question": "Can I use this with imperial units?",
+      "answer": "Yes. The calculator supports both metric (kg, cm) and imperial (lbs, feet/inches) units."
+    }
+  ],
+  "formula": "BMI = weight (kg) / (height (m))²",
+  "examples": [
+    {
+      "title": "Normal weight calculation",
+      "description": "Calculate BMI for an average adult.",
+      "input": "Weight: 70 kg, Height: 175 cm",
+      "output": "BMI = 22.9 (Normal)"
+    }
+  ]
+}

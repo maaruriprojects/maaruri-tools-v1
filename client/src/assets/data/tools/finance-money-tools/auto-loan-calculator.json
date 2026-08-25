@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "title": "Auto Loan Calculator — Car Loan Monthly Payment Estimator",
+    "description": "Calculate your monthly car loan payments based on loan amount, interest rate, and loan term. See total interest and total cost before you buy."
+  },
+  "howItWorks": [
+    "Enter the total loan amount you plan to borrow.",
+    "Enter the annual interest rate offered by your lender.",
+    "Enter the loan term in months or years.",
+    "The calculator uses the standard amortization formula to compute your monthly payment."
+  ],
+  "howToUse": [
+    "Input the loan amount (e.g., 250000).",
+    "Input the annual interest rate (e.g., 9.5%).",
+    "Input the loan term (e.g., 60 months).",
+    "View your monthly payment, total interest, and total amount payable."
+  ],
+  "faq": [
+    {
+      "question": "What is an EMI?",
+      "answer": "EMI (Equated Monthly Installment) is the fixed monthly payment you make to repay a loan. It includes both principal and interest."
+    },
+    {
+      "question": "Does this calculator include taxes and fees?",
+      "answer": "No. This calculator estimates principal and interest only. Taxes, registration, insurance, and fees are not included."
+    },
+    {
+      "question": "Can I compare different loan terms?",
+      "answer": "Yes. Change the loan term to see how a shorter or longer term affects your monthly payment and total interest."
+    }
+  ],
+  "formula": "EMI = [P × R × (1+R)^N] / [(1+R)^N − 1], where P = principal, R = monthly rate, N = months",
+  "examples": [
+    {
+      "title": "Standard car loan",
+      "description": "Calculate monthly payment for a typical car loan.",
+      "input": "Loan: ₹2,50,000, Rate: 9.5%, Term: 60 months",
+      "output": "Monthly payment: ₹5,252, Total interest: ₹65,120"
+    }
+  ]
+}

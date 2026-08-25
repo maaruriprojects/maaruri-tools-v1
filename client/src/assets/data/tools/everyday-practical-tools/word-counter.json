@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "title": "Word Counter — Count Words, Characters, and Sentences",
+    "description": "Free online word counter. Instantly count words, characters, sentences, and paragraphs in your text. Perfect for essays, articles, and social media."
+  },
+  "howItWorks": [
+    "Type or paste your text into the input area.",
+    "The tool counts words, characters (with and without spaces), sentences, and paragraphs in real time.",
+    "Counts update automatically as you edit your text."
+  ],
+  "howToUse": [
+    "Paste or type your text in the text area.",
+    "View the word count, character count, sentence count, and paragraph count below.",
+    "Use the counts for essays, articles, social media posts, or any text-based work."
+  ],
+  "faq": [
+    {
+      "question": "Does the word counter work offline?",
+      "answer": "Yes. Once the page is loaded, all counting happens in your browser. No internet connection is needed."
+    },
+    {
+      "question": "Is my text stored or sent anywhere?",
+      "answer": "No. Your text is processed entirely in your browser. Nothing is uploaded to a server or stored."
+    },
+    {
+      "question": "How are sentences counted?",
+      "answer": "Sentences are counted by detecting sentence-ending punctuation (periods, exclamation marks, question marks) followed by a space or line break."
+    }
+  ],
+  "examples": [
+    {
+      "title": "Count words in a paragraph",
+      "description": "Paste a paragraph to see word and character counts.",
+      "input": "\"The quick brown fox jumps over the lazy dog.\"",
+      "output": "9 words, 44 characters, 1 sentence, 1 paragraph"
+    }
+  ]
+}

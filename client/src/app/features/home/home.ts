@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { AppConfigService } from '../../core/config/app-config.service';
-import { AdBanner, AdAuto } from '../../shared/ad-components';
+import { AdBanner } from '../../shared/ad-components/ad-banner';
+import { AdAuto } from '../../shared/ad-components/ad-auto';
 
 @Component({
   selector: 'app-home',

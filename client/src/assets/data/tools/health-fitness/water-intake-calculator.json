@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "title": "Water Intake Calculator — Daily Hydration Needs",
+    "description": "Calculate how much water you should drink daily based on your body weight and activity level. Stay hydrated with personalized recommendations."
+  },
+  "howItWorks": [
+    "Enter your body weight in kilograms or pounds.",
+    "Select your daily activity level from the options.",
+    "The calculator estimates your recommended daily water intake."
+  ],
+  "howToUse": [
+    "Input your body weight.",
+    "Choose your activity level (sedentary, moderate, active, or intense).",
+    "View your recommended daily water intake in liters or ounces."
+  ],
+  "faq": [
+    {
+      "question": "How much water should I drink per day?",
+      "answer": "A common guideline is 2–3 liters per day, but your actual needs depend on weight, activity, climate, and health conditions. This calculator gives a personalized estimate."
+    },
+    {
+      "question": "Does coffee or tea count toward water intake?",
+      "answer": "Yes, beverages like coffee and tea contribute to your daily fluid intake, though water is always the best choice for hydration."
+    },
+    {
+      "question": "Should I drink more water when exercising?",
+      "answer": "Yes. You lose water through sweat during exercise. The calculator factors in your activity level to recommend additional intake."
+    }
+  ],
+  "formula": "Daily water (liters) = weight (kg) × 0.033 × activity multiplier",
+  "examples": [
+    {
+      "title": "Moderate activity",
+      "description": "Calculate water intake for a moderately active person.",
+      "input": "Weight: 70 kg, Activity: Moderate",
+      "output": "Recommended: ~2.8 liters/day"
+    }
+  ]
+}

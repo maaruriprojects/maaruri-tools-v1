@@ -1,0 +1,173 @@
+@if (tool() && category()) {
+  <!-- ── Hero section ────────────────────────────────────────── -->
+  <section class="mt-tool-hero">
+    <div class="mt-container">
+      <nav class="mt-tool-breadcrumb">
+        <a routerLink="/">Home</a>
+        <span class="mt-tool-breadcrumb__sep">/</span>
+        <a [routerLink]="'/' + category()!.slug">{{ category()!.name }}</a>
+        <span class="mt-tool-breadcrumb__sep">/</span>
+        <span class="mt-tool-breadcrumb__current">{{ tool()!.name }}</span>
+      </nav>
+      <div class="mt-tool-hero__content">
+        <span class="mt-tool-hero__icon">{{ getIcon(tool()!.icon) }}</span>
+        <div>
+          <h1 class="mt-tool-hero__title">{{ tool()!.name }}</h1>
+          <p class="mt-tool-hero__desc">{{ tool()!.shortDescription }}</p>
+        </div>
+      </div>
+      <div class="mt-tool-hero__ad">
+        <app-ad-auto slot="0000000000" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Main workspace ─────────────────────────────────────── -->
+  <section class="mt-tool-workspace">
+    <div class="mt-container">
+      <div class="mt-tool-layout" [class.mt-tool-layout--full]="isFullWidth()">
+        <!-- Tool UI area (placeholder for now — actual tools come later) -->
+        <div class="mt-tool-layout__main">
+          <div class="mt-tool-workspace-card mt-card">
+            <div class="mt-tool-placeholder">
+              <span class="mt-tool-placeholder__icon">{{ getIcon(tool()!.icon) }}</span>
+              <p class="mt-tool-placeholder__text">{{ tool()!.name }} workspace will appear here.</p>
+              <p class="mt-tool-placeholder__hint">Tool component is loaded dynamically in the next phase.</p>
+            </div>
+          </div>
+
+          <!-- Mobile/full-width: rectangle ad moves below -->
+          @if (isFullWidth()) {
+            <div class="mt-tool-layout__ad-below">
+              <app-ad-rectangle slot="0000000000" />
+            </div>
+          }
+        </div>
+
+        <!-- Desktop right-side rectangle ad (hidden for full-width tools) -->
+        @if (!isFullWidth()) {
+          <aside class="mt-tool-layout__sidebar">
+            <app-ad-rectangle slot="0000000000" />
+          </aside>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Content information blocks ──────────────────────────── -->
+  @if (contentBlocks().length > 0) {
+    <section class="mt-tool-content">
+      <div class="mt-container">
+        <div class="mt-tool-content__blocks">
+          @for (block of contentBlocks(); track block.type; let i = $index) {
+            <div class="mt-tool-content__block mt-card" [id]="block.type">
+              <h2 class="mt-tool-content__block-title">
+                <span class="mt-tool-content__block-icon">{{ block.icon }}</span>
+                {{ block.title }}
+              </h2>
+
+              <div class="mt-tool-content__block-body">
+                <!-- How It Works / How to Use: numbered steps -->
+                @if (block.type === 'howItWorks') {
+                  <ol class="mt-tool-steps">
+                    @for (step of howItWorks(); track step) {
+                      <li>{{ step }}</li>
+                    }
+                  </ol>
+                } @else if (block.type === 'howToUse') {
+                  <ol class="mt-tool-steps">
+                    @for (step of howToUse(); track step) {
+                      <li>{{ step }}</li>
+                    }
+                  </ol>
+                } @else if (block.type === 'formula') {
+                  @if (formula()) {
+                    <div class="mt-tool-formula">{{ formula() }}</div>
+                  }
+                } @else if (block.type === 'examples') {
+                  <div class="mt-tool-examples">
+                    @for (ex of examples(); track ex.title) {
+                      <div class="mt-tool-example">
+                        <h3 class="mt-tool-example__title">{{ ex.title }}</h3>
+                        <p class="mt-tool-example__desc">{{ ex.description }}</p>
+                        <div class="mt-tool-example__io">
+                          <div class="mt-tool-example__field">
+                            <span class="mt-tool-example__label">Input</span>
+                            <span class="mt-tool-example__value">{{ ex.input }}</span>
+                          </div>
+                          <div class="mt-tool-example__field">
+                            <span class="mt-tool-example__label">Output</span>
+                            <span class="mt-tool-example__value">{{ ex.output }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    }
+                  </div>
+                } @else if (block.type === 'faq') {
+                  <div class="mt-tool-faq">
+                    @for (item of faq(); track item.question) {
+                      <details class="mt-tool-faq__item">
+                        <summary class="mt-tool-faq__question">{{ item.question }}</summary>
+                        <p class="mt-tool-faq__answer">{{ item.answer }}</p>
+                      </details>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+
+            <!-- Insert in-article ad after every 2 blocks -->
+            @if ((i + 1) % 2 === 0 && i < contentBlocks().length - 1) {
+              <div class="mt-tool-content__ad">
+                <app-ad-in-article slot="0000000000" />
+              </div>
+            }
+          }
+        </div>
+      </div>
+    </section>
+  }
+
+  <!-- ── Related tools ───────────────────────────────────────── -->
+  @if (relatedTools().length > 0) {
+    <section class="mt-tool-related">
+      <div class="mt-container">
+        <h2 class="mt-tool-related__title">Related Tools</h2>
+        <div class="mt-tool-related__grid">
+          @for (rel of relatedTools(); track rel.id) {
+            <a class="mt-tool-related__card mt-card" [routerLink]="'/' + rel.categorySlug + '/' + rel.slug">
+              <span class="mt-tool-related__card-icon">{{ getIcon(rel.icon) }}</span>
+              <div>
+                <h3 class="mt-tool-related__card-name">{{ rel.name }}</h3>
+                <p class="mt-tool-related__card-desc">{{ rel.shortDescription }}</p>
+              </div>
+            </a>
+          }
+        </div>
+      </div>
+    </section>
+  }
+
+  <!-- ── Bottom banner ad ─────────────────────────────────────── -->
+  <div class="mt-tool-bottom-ad">
+    <app-ad-banner slot="0000000000" />
+  </div>
+} @else if (loaded()) {
+  <!-- Tool not found -->
+  <section class="mt-tool-not-found">
+    <div class="mt-container">
+      <div class="mt-tool-not-found__inner">
+        <span class="mt-tool-not-found__icon">🔍</span>
+        <h1 class="mt-tool-not-found__title">Tool Not Found</h1>
+        <p class="mt-tool-not-found__text">The tool you're looking for doesn't exist or may have been moved.</p>
+        <a class="mt-tool-not-found__link" routerLink="/">Back to Home</a>
+      </div>
+    </div>
+  </section>
+} @else {
+  <section class="mt-tool-loading">
+    <div class="mt-container">
+      <p class="mt-text-muted">Loading...</p>
+    </div>
+  </section>
+}

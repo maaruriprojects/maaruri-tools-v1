@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, tap, catchError, of } from 'rxjs';
 import { Category, Tool } from '../../shared/models';
 
-interface RegistryFile {
+export interface RegistryFile {
   categories: Category[];
   tools: Tool[];
 }

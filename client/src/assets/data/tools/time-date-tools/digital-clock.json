@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "title": "Digital Clock — Real-Time Online Clock (HH:MM:SS)",
+    "description": "A free online digital clock that displays the current time in real-time with hours, minutes, and seconds. No installation needed — just open and read the time."
+  },
+  "howItWorks": [
+    "The digital clock uses your device's local system time via the JavaScript Date object.",
+    "It updates every second to show the precise current time in HH:MM:SS format.",
+    "The time is based on your computer or phone's timezone settings — no internet sync required."
+  ],
+  "howToUse": [
+    "Open the Digital Clock tool — it starts automatically.",
+    "Read the time displayed in large, easy-to-read digits.",
+    "Keep the tab open for a continuous real-time display."
+  ],
+  "faq": [
+    {
+      "question": "Does this clock work offline?",
+      "answer": "Yes. The digital clock uses your device's local system clock, so it works without an internet connection once the page is loaded."
+    },
+    {
+      "question": "Can I use this as a full-screen clock?",
+      "answer": "Yes. You can use your browser's zoom feature to enlarge the display, or use full-screen mode (F11 on most browsers) for a bigger view."
+    },
+    {
+      "question": "Is the time accurate?",
+      "answer": "The time matches your device's system clock. If your device time is correct, the digital clock will be accurate to the second."
+    }
+  ],
+  "examples": [
+    {
+      "title": "Real-time display",
+      "description": "The clock shows the current time updating every second.",
+      "input": "Current system time",
+      "output": "14:37:52"
+    }
+  ]
+}
