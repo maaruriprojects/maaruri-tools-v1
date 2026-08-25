@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "title": "Auto Mouse Mover — Keep Your System Active",
+    "description": "Automatically simulates mouse movement to prevent your computer from going to sleep or showing as idle. Just keep this tab open and your system stays awake."
+  },
+  "howItWorks": [
+    "The tool simulates small mouse movements at regular intervals.",
+    "These movements prevent your operating system from detecting inactivity.",
+    "Your system stays active while the tool runs in the browser tab."
+  ],
+  "howToUse": [
+    "Click Start to begin automatic mouse movement.",
+    "Set the interval (in seconds) between movements if adjustable.",
+    "Click Stop when you no longer need the system to stay awake."
+  ],
+  "faq": [
+    {
+      "question": "Is this safe to use?",
+      "answer": "Yes. The tool only simulates mouse movement within the browser. It does not install any software or modify system settings."
+    },
+    {
+      "question": "Will this work if I close the tab?",
+      "answer": "No. The mouse mover only works while the browser tab is open and active. Closing the tab stops the simulation."
+    },
+    {
+      "question": "Can I use this to prevent screen lock?",
+      "answer": "Yes. The simulated movement prevents most systems from triggering screen lock or sleep mode while the tab is open."
+    }
+  ],
+  "examples": [
+    {
+      "title": "Prevent idle status",
+      "description": "Keep your system active during long downloads or processes.",
+      "input": "Interval: 30 seconds",
+      "output": "Mouse moves every 30 seconds — system stays awake"
+    }
+  ]
+}

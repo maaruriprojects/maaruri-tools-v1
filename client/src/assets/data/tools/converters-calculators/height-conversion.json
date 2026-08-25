@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "title": "Height Conversion — Convert Feet, Inches, CM, and Meters",
+    "description": "Convert height between feet, inches, centimeters, and meters instantly. Free online height converter for everyday use."
+  },
+  "howItWorks": [
+    "Enter your height in any supported unit (feet, inches, centimeters, or meters).",
+    "The converter instantly calculates the equivalent values in all other units.",
+    "Results update as you type — no need to click a button."
+  ],
+  "howToUse": [
+    "Type your height in one of the input fields (e.g., centimeters).",
+    "The other fields update automatically with converted values.",
+    "Copy the value you need from the corresponding field."
+  ],
+  "faq": [
+    {
+      "question": "How many centimeters are in one foot?",
+      "answer": "One foot equals 30.48 centimeters. One inch equals 2.54 centimeters."
+    },
+    {
+      "question": "Can I convert from feet and inches together?",
+      "answer": "Yes. Enter feet in the feet field and inches in the inches field. The converter combines them for the total height."
+    },
+    {
+      "question": "Is this height converter free?",
+      "answer": "Yes. The height conversion tool is completely free with no limits or signup required."
+    }
+  ],
+  "formula": "1 foot = 30.48 cm, 1 inch = 2.54 cm, 1 meter = 100 cm",
+  "examples": [
+    {
+      "title": "Convert feet to centimeters",
+      "description": "Convert a height given in feet and inches to centimeters.",
+      "input": "5 feet 9 inches",
+      "output": "175.26 cm, 1.7526 m"
+    }
+  ]
+}

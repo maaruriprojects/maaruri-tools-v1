@@ -1,5 +1,4 @@
-import { Component, input, inject, AfterViewInit } from '@angular/core';
-import { AdService } from '../../core/ads/ad.service';
+import { Component, input, AfterViewInit } from '@angular/core';
 
 /**
  * <app-ad-in-article> — In-article ad.
@@ -17,13 +16,18 @@ import { AdService } from '../../core/ads/ad.service';
   styleUrl: './ad-in-article.scss',
 })
 export class AdInArticle implements AfterViewInit {
-  private readonly adService = inject(AdService);
-
   /** Google AdSense slot ID — replace with your real slot ID. */
   readonly slot = input<string>('0000000000');
-  readonly clientId = this.adService.clientId;
+  /** Publisher ID — defaults to placeholder, override with real ID. */
+  readonly clientId = input<string>('ca-pub-XXXXXXXXXXXXXXXX');
 
   ngAfterViewInit(): void {
-    this.adService.pushAd();
+    try {
+      const w = window as unknown as { adsbygoogle?: unknown[] };
+      if (!w.adsbygoogle) w.adsbygoogle = [];
+      (w.adsbygoogle as unknown[]).push({});
+    } catch (e) {
+      console.warn('AdSense push failed:', e);
+    }
   }
 }

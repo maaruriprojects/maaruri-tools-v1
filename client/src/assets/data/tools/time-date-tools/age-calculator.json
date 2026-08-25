@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "title": "Age Calculator — Calculate Exact Age from Birthdate",
+    "description": "Calculate your exact age in years, months, and days from a given birthdate. Free and instant — no signup needed."
+  },
+  "howItWorks": [
+    "Enter your date of birth in the date picker.",
+    "The calculator finds the difference between your birthdate and today's date.",
+    "It breaks down the difference into years, months, and days for a precise age."
+  ],
+  "howToUse": [
+    "Select your birth date using the date picker.",
+    "Optionally select a target date (defaults to today).",
+    "View your exact age in years, months, and days instantly."
+  ],
+  "faq": [
+    {
+      "question": "How accurate is the age calculator?",
+      "answer": "The calculator accounts for leap years and varying month lengths, giving you an exact age down to the day."
+    },
+    {
+      "question": "Can I calculate age as of a future date?",
+      "answer": "Yes. Change the target date to any future or past date to calculate age as of that specific date."
+    },
+    {
+      "question": "Is my data stored?",
+      "answer": "No. All calculations happen in your browser. Your birthdate is never sent to a server or stored."
+    }
+  ],
+  "examples": [
+    {
+      "title": "Age from birthdate",
+      "description": "Calculate age from a specific birthdate to today.",
+      "input": "Birthdate: 1990-05-15",
+      "output": "35 years, 3 months, 10 days"
+    }
+  ]
+}

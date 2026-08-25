@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "title": "Analog Clock — Online Clock with Hour and Minute Hands",
+    "description": "A free online analog clock with moving hour and minute hands. View the current time in a classic clock face format."
+  },
+  "howItWorks": [
+    "The analog clock reads the current time from your device's system clock.",
+    "The hour and minute hands rotate based on the current hours and minutes.",
+    "The clock face updates smoothly every second to reflect the exact time."
+  ],
+  "howToUse": [
+    "Open the Analog Clock tool — it starts automatically.",
+    "Read the time from the clock face with hour and minute hands.",
+    "Keep the tab open for a continuous real-time display."
+  ],
+  "faq": [
+    {
+      "question": "Does the analog clock show seconds?",
+      "answer": "The analog clock displays hour and minute hands. A second hand may be shown depending on the display mode."
+    },
+    {
+      "question": "Can I use this for presentations?",
+      "answer": "Yes. The analog clock is great for classrooms and presentations. Use full-screen mode for a larger display."
+    },
+    {
+      "question": "Is the time based on my timezone?",
+      "answer": "Yes. The analog clock uses your device's local timezone settings to display the correct time."
+    }
+  ],
+  "examples": [
+    {
+      "title": "Clock face reading",
+      "description": "The analog clock shows the current time with rotating hands.",
+      "input": "Current system time",
+      "output": "Hour hand near 3, minute hand near 8 (3:40)"
+    }
+  ]
+}
