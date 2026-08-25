@@ -8,6 +8,15 @@ import { AdRectangle } from '../../../shared/ad-components/ad-rectangle';
 import { AdInArticle } from '../../../shared/ad-components/ad-in-article';
 import { AdAuto } from '../../../shared/ad-components/ad-auto';
 import { Tool, ToolMeta, FaqItem, ToolExample } from '../../../shared/models';
+import { DigitalClock } from '../time-date-tools/digital-clock';
+import { AnalogClock } from '../time-date-tools/analog-clock';
+import { AgeCalculator } from '../time-date-tools/age-calculator';
+import { BmiCalculator } from '../health-fitness/bmi-calculator';
+import { WaterIntakeCalculator } from '../health-fitness/water-intake-calculator';
+import { AutoLoanCalculator } from '../finance-money-tools/auto-loan-calculator';
+import { AutoMouseMover } from '../work-productivity/auto-mouse-mover';
+import { HeightConversion } from '../converters-calculators/height-conversion';
+import { WordCounter } from '../everyday-practical-tools/word-counter';
 
 const ICONS: Record<string, string> = {
   'clock': '🕐',
@@ -37,7 +46,10 @@ interface ContentBlock {
 
 @Component({
   selector: 'app-tool-shell',
-  imports: [CommonModule, RouterLink, AdBanner, AdRectangle, AdInArticle, AdAuto],
+  imports: [CommonModule, RouterLink, AdBanner, AdRectangle, AdInArticle, AdAuto,
+    DigitalClock, AnalogClock, AgeCalculator, BmiCalculator,
+    WaterIntakeCalculator, AutoLoanCalculator, AutoMouseMover,
+    HeightConversion, WordCounter],
   templateUrl: './tool-shell.html',
   styleUrl: './tool-shell.scss',
 })
@@ -87,6 +99,7 @@ export class ToolShell implements OnInit {
     return blocks;
   });
 
+  readonly toolSlug = this._toolSlug.asReadonly();
   readonly isFullWidth = computed(() => this.tool()?.isFullWidth ?? false);
 
   ngOnInit(): void {

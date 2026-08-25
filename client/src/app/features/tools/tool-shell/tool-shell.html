@@ -29,11 +29,23 @@
         <!-- Tool UI area (placeholder for now — actual tools come later) -->
         <div class="mt-tool-layout__main">
           <div class="mt-tool-workspace-card mt-card">
-            <div class="mt-tool-placeholder">
-              <span class="mt-tool-placeholder__icon">{{ getIcon(tool()!.icon) }}</span>
-              <p class="mt-tool-placeholder__text">{{ tool()!.name }} workspace will appear here.</p>
-              <p class="mt-tool-placeholder__hint">Tool component is loaded dynamically in the next phase.</p>
-            </div>
+            @switch (toolSlug()) {
+              @case ('digital-clock') { <app-digital-clock /> }
+              @case ('analog-clock') { <app-analog-clock /> }
+              @case ('age-calculator') { <app-age-calculator /> }
+              @case ('bmi-calculator') { <app-bmi-calculator /> }
+              @case ('water-intake-calculator') { <app-water-intake-calculator /> }
+              @case ('auto-loan-calculator') { <app-auto-loan-calculator /> }
+              @case ('auto-mouse-mover') { <app-auto-mouse-mover /> }
+              @case ('height-conversion') { <app-height-conversion /> }
+              @case ('word-counter') { <app-word-counter /> }
+              @default {
+                <div class="mt-tool-placeholder">
+                  <span class="mt-tool-placeholder__icon">{{ getIcon(tool()!.icon) }}</span>
+                  <p class="mt-tool-placeholder__text">This tool is not yet available.</p>
+                </div>
+              }
+            }
           </div>
 
           <!-- Mobile/full-width: rectangle ad moves below -->
