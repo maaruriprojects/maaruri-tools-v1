@@ -29,7 +29,8 @@
   $headings-font-family: ("Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif),
   $headings-color: #0f172a,
   $headings-font-weight: 600,
-  $body-font-weight: 400,
+  //$body-font-weight: 400,
+  $font-weight-base: 400,
 
   // Radii — soft, rounded
   $border-radius:    0.5rem,
