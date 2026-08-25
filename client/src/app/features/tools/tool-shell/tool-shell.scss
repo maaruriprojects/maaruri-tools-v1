@@ -70,7 +70,6 @@
   display: grid;
   grid-template-columns: 1fr 300px;
   gap: var(--mt-space-6);
-  transition: grid-template-columns var(--mt-transition-base);
 
   &--full {
     grid-template-columns: 1fr;
