@@ -7,15 +7,12 @@
 @use "bootstrap/scss/bootstrap" with (
   // Primary — deep teal/emerald
   $primary:   #0d9488,
-  $primary-rgb: "13, 148, 136",
 
   // Secondary — slate neutral
   $secondary: #64748b,
-  $secondary-rgb: "100, 116, 139",
 
   // Accent — warm amber (mapped to Bootstrap "warning" for CTA reuse)
   $warning:   #f59e0b,
-  $warning-rgb: "245, 158, 11",
 
   // Semantic
   $success:   #16a34a,
