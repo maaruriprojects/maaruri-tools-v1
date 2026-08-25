@@ -90,6 +90,16 @@
   gap: 2px;
 }
 
+.mt-sidebar__error {
+  display: flex;
+  align-items: center;
+  gap: var(--mt-space-3);
+  padding: var(--mt-space-3);
+  font-size: var(--mt-text-xs);
+  color: var(--mt-error, #dc2626);
+  line-height: 1.4;
+}
+
 // ── Item ────────────────────────────────────────────────────
 .mt-sidebar__item {
   display: flex;

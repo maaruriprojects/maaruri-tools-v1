@@ -35,29 +35,36 @@
   </div>
 
   <nav class="mt-sidebar__nav">
-    @for (category of categories(); track category.slug) {
-      @if (hasTools(category.slug)) {
-        <a
-          class="mt-sidebar__item"
-          [routerLink]="'/' + category.slug"
-          [title]="category.name"
-          (click)="closeMobile()"
-        >
-          <span class="mt-sidebar__icon">{{ getIcon(category.icon) }}</span>
-          <span class="mt-sidebar__label">{{ category.name }}</span>
-          <span class="mt-sidebar__count">{{ getToolCount(category.slug) }}</span>
-        </a>
-      } @else {
-        <a
-          class="mt-sidebar__item mt-sidebar__item--empty"
-          [routerLink]="'/' + category.slug"
-          [title]="category.name"
-          (click)="closeMobile()"
-        >
-          <span class="mt-sidebar__icon">{{ getIcon(category.icon) }}</span>
-          <span class="mt-sidebar__label">{{ category.name }}</span>
-          <span class="mt-sidebar__badge">soon</span>
-        </a>
+    @if (loadError()) {
+      <div class="mt-sidebar__error">
+        <span class="mt-sidebar__icon">⚠️</span>
+        <span class="mt-sidebar__label">Couldn't load categories. Please refresh.</span>
+      </div>
+    } @else {
+      @for (category of categories(); track category.slug) {
+        @if (hasTools(category.slug)) {
+          <a
+            class="mt-sidebar__item"
+            [routerLink]="'/' + category.slug"
+            [title]="category.name"
+            (click)="closeMobile()"
+          >
+            <span class="mt-sidebar__icon">{{ getIcon(category.icon) }}</span>
+            <span class="mt-sidebar__label">{{ category.name }}</span>
+            <span class="mt-sidebar__count">{{ getToolCount(category.slug) }}</span>
+          </a>
+        } @else {
+          <a
+            class="mt-sidebar__item mt-sidebar__item--empty"
+            [routerLink]="'/' + category.slug"
+            [title]="category.name"
+            (click)="closeMobile()"
+          >
+            <span class="mt-sidebar__icon">{{ getIcon(category.icon) }}</span>
+            <span class="mt-sidebar__label">{{ category.name }}</span>
+            <span class="mt-sidebar__badge">soon</span>
+          </a>
+        }
       }
     }
   </nav>
