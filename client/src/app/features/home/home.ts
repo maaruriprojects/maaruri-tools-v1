@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { AppConfigService } from '../../core/config/app-config.service';
+import { AdBanner, AdAuto } from '../../shared/ad-components';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [AdBanner, AdAuto],
   template: `
     <section class="mt-home">
       <div class="mt-container">
@@ -12,8 +13,16 @@ import { AppConfigService } from '../../core/config/app-config.service';
           <p class="mt-home__subtitle">Free online utility tools — calculators, converters, timers and more.</p>
           <p class="mt-home__hint">Header, search, and country selector are ready. More pages coming soon.</p>
         </div>
+
+        <!-- Hero auto-format ad -->
+        <div class="mt-home__ad-hero">
+          <app-ad-auto slot="0000000000" />
+        </div>
       </div>
     </section>
+
+    <!-- Bottom banner ad — always visible across all pages -->
+    <app-ad-banner slot="0000000000" />
   `,
   styles: [`
     .mt-home {
@@ -41,6 +50,9 @@ import { AppConfigService } from '../../core/config/app-config.service';
     .mt-home__hint {
       font-size: var(--mt-text-sm);
       color: var(--mt-text-muted);
+    }
+    .mt-home__ad-hero {
+      margin-top: var(--mt-space-8);
     }
   `],
 })
