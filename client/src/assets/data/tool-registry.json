@@ -1,0 +1,171 @@
+{
+  "categories": [
+    {
+      "slug": "time-date-tools",
+      "name": "Time & Date Tools",
+      "icon": "clock",
+      "description": "Clocks, timers, and date calculators for everyday time needs."
+    },
+    {
+      "slug": "health-fitness",
+      "name": "Health & Fitness",
+      "icon": "heart-pulse",
+      "description": "Body and nutrition calculators to track your health goals."
+    },
+    {
+      "slug": "finance-money-tools",
+      "name": "Finance & Money Tools",
+      "icon": "wallet",
+      "description": "Loan, EMI, and money calculators for smart financial decisions."
+    },
+    {
+      "slug": "work-productivity",
+      "name": "Work & Productivity",
+      "icon": "briefcase",
+      "description": "Tools to keep you productive and your workflow smooth."
+    },
+    {
+      "slug": "converters-calculators",
+      "name": "Converters & Calculators",
+      "icon": "calculator",
+      "description": "Unit converters and general-purpose calculators."
+    },
+    {
+      "slug": "everyday-practical-tools",
+      "name": "Everyday & Practical Tools",
+      "icon": "house",
+      "description": "Practical text and everyday utilities you use all the time."
+    },
+    {
+      "slug": "creative-design-tools",
+      "name": "Creative & Design Tools",
+      "icon": "palette",
+      "description": "Color, image, and design helpers for creators."
+    },
+    {
+      "slug": "development-web-tools",
+      "name": "Development & Web Tools",
+      "icon": "code",
+      "description": "Developer utilities for encoding, formatting, and testing."
+    },
+    {
+      "slug": "travel-transportation",
+      "name": "Travel & Transportation",
+      "icon": "plane",
+      "description": "Distance, fuel, and travel calculators for your trips."
+    },
+    {
+      "slug": "document-language-tools",
+      "name": "Document & Language Tools",
+      "icon": "file-text",
+      "description": "Document converters and language translation helpers."
+    },
+    {
+      "slug": "personal-social-tools",
+      "name": "Personal & Social Tools",
+      "icon": "users",
+      "description": "Personal planning and social media helper tools."
+    }
+  ],
+  "tools": [
+    {
+      "id": "digital-clock",
+      "slug": "digital-clock",
+      "name": "Digital Clock",
+      "categorySlug": "time-date-tools",
+      "icon": "clock",
+      "shortDescription": "Displays real-time time in a digital format (HH:MM:SS).",
+      "searchKeywords": ["digital clock", "time", "real-time", "hh:mm:ss"],
+      "isFullWidth": true,
+      "contentFile": "assets/data/tools/time-date-tools/digital-clock.json"
+    },
+    {
+      "id": "analog-clock",
+      "slug": "analog-clock",
+      "name": "Analog Clock",
+      "categorySlug": "time-date-tools",
+      "icon": "clock",
+      "shortDescription": "Shows time using hour and minute hands.",
+      "searchKeywords": ["analog clock", "clock", "hour hand", "minute hand"],
+      "isFullWidth": true,
+      "contentFile": "assets/data/tools/time-date-tools/analog-clock.json"
+    },
+    {
+      "id": "age-calculator",
+      "slug": "age-calculator",
+      "name": "Age Calculator",
+      "categorySlug": "time-date-tools",
+      "icon": "calendar-days",
+      "shortDescription": "Find exact age in years, months, and days from a given birthdate.",
+      "searchKeywords": ["age calculator", "birthday", "years", "months", "days"],
+      "isFullWidth": false,
+      "contentFile": "assets/data/tools/time-date-tools/age-calculator.json"
+    },
+    {
+      "id": "bmi-calculator",
+      "slug": "bmi-calculator",
+      "name": "BMI Calculator",
+      "categorySlug": "health-fitness",
+      "icon": "heart-pulse",
+      "shortDescription": "Check if your weight is healthy based on height and weight.",
+      "searchKeywords": ["bmi", "body mass index", "weight", "height", "health"],
+      "isFullWidth": false,
+      "contentFile": "assets/data/tools/health-fitness/bmi-calculator.json"
+    },
+    {
+      "id": "water-intake-calculator",
+      "slug": "water-intake-calculator",
+      "name": "Water Intake Calculator",
+      "categorySlug": "health-fitness",
+      "icon": "droplet",
+      "shortDescription": "Calculates daily water needs based on body weight and activity.",
+      "searchKeywords": ["water intake", "hydration", "daily water", "body weight"],
+      "isFullWidth": false,
+      "contentFile": "assets/data/tools/health-fitness/water-intake-calculator.json"
+    },
+    {
+      "id": "auto-loan-calculator",
+      "slug": "auto-loan-calculator",
+      "name": "Auto Loan Calculator",
+      "categorySlug": "finance-money-tools",
+      "icon": "car",
+      "shortDescription": "Calculates monthly payments for car loans based on amount, interest rate, and term.",
+      "searchKeywords": ["auto loan", "car loan", "emi", "monthly payment", "interest"],
+      "isFullWidth": false,
+      "contentFile": "assets/data/tools/finance-money-tools/auto-loan-calculator.json"
+    },
+    {
+      "id": "auto-mouse-mover",
+      "slug": "auto-mouse-mover",
+      "name": "Auto Mouse Mover",
+      "categorySlug": "work-productivity",
+      "icon": "mouse-pointer",
+      "shortDescription": "Keeps your system active by simulating mouse movement automatically while the website stays open.",
+      "searchKeywords": ["mouse mover", "auto mouse", "prevent sleep", "keep awake", "system active"],
+      "isFullWidth": false,
+      "contentFile": "assets/data/tools/work-productivity/auto-mouse-mover.json"
+    },
+    {
+      "id": "height-conversion",
+      "slug": "height-conversion",
+      "name": "Height Conversion",
+      "categorySlug": "converters-calculators",
+      "icon": "ruler",
+      "shortDescription": "Converts height between different units of measurement (e.g. feet to inches, cm to feet).",
+      "searchKeywords": ["height conversion", "feet", "inches", "cm", "meters", "height converter"],
+      "isFullWidth": false,
+      "contentFile": "assets/data/tools/converters-calculators/height-conversion.json"
+    },
+    {
+      "id": "word-counter",
+      "slug": "word-counter",
+      "name": "Word Counter",
+      "categorySlug": "everyday-practical-tools",
+      "icon": "type",
+      "shortDescription": "Count words, characters, and sentences.",
+      "searchKeywords": ["word counter", "character count", "sentence count", "text"],
+      "isFullWidth": false,
+      "contentFile": "assets/data/tools/everyday-practical-tools/word-counter.json"
+    }
+  ]
+}

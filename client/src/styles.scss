@@ -1,2 +1,96 @@
-/* You can add global styles to this file, and also import other style files */
-@use "bootstrap/scss/bootstrap";
+// ============================================================
+// Maaruri Tools — Global Styles
+// ============================================================
+
+@use "styles/tokens";
+@use "styles/breakpoints";
+@use "styles/theme";
+
+// ── Base resets & defaults ───────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--mt-font-sans);
+  font-size: var(--mt-text-base);
+  line-height: var(--mt-leading-normal);
+  color: var(--mt-text);
+  background-color: var(--mt-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--mt-heading);
+  font-weight: var(--mt-font-semibold);
+  line-height: var(--mt-leading-tight);
+}
+
+a {
+  color: var(--mt-primary);
+  text-decoration: none;
+  transition: color var(--mt-transition-fast);
+
+  &:hover {
+    color: var(--mt-primary-dark);
+  }
+}
+
+// ── Utility classes ─────────────────────────────────────────
+.mt-container {
+  width: 100%;
+  max-width: var(--mt-content-max-width);
+  margin-inline: auto;
+  padding-inline: var(--mt-space-5);
+}
+
+.mt-card {
+  background: var(--mt-surface);
+  border: 1px solid var(--mt-border);
+  border-radius: var(--mt-radius-lg);
+  box-shadow: var(--mt-shadow-sm);
+  transition: box-shadow var(--mt-transition-base), transform var(--mt-transition-base);
+
+  &:hover {
+    box-shadow: var(--mt-shadow-md);
+  }
+}
+
+.mt-text-muted {
+  color: var(--mt-text-muted);
+}
+
+// ── Scrollbar styling ───────────────────────────────────────
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--mt-neutral-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mt-neutral-300);
+  border-radius: var(--mt-radius-full);
+
+  &:hover {
+    background: var(--mt-neutral-400);
+  }
+}
+
+// ── Focus visibility ───────────────────────────────────────
+:focus-visible {
+  outline: 2px solid var(--mt-primary);
+  outline-offset: 2px;
+}
