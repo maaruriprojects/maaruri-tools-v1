@@ -1,0 +1,44 @@
+{
+  "locales": [
+    {
+      "countryCode": "IN",
+      "countryName": "India",
+      "flag": "🇮🇳",
+      "currencyCode": "INR",
+      "currencySymbol": "₹",
+      "languages": ["en", "hi", "te", "kn"]
+    },
+    {
+      "countryCode": "US",
+      "countryName": "United States",
+      "flag": "🇺🇸",
+      "currencyCode": "USD",
+      "currencySymbol": "$",
+      "languages": ["en"]
+    },
+    {
+      "countryCode": "CN",
+      "countryName": "China",
+      "flag": "🇨🇳",
+      "currencyCode": "CNY",
+      "currencySymbol": "¥",
+      "languages": ["zh"]
+    },
+    {
+      "countryCode": "FR",
+      "countryName": "France",
+      "flag": "🇫🇷",
+      "currencyCode": "EUR",
+      "currencySymbol": "€",
+      "languages": ["fr"]
+    }
+  ],
+  "languages": {
+    "en": { "name": "English", "nativeName": "English" },
+    "hi": { "name": "Hindi", "nativeName": "हिन्दी" },
+    "te": { "name": "Telugu", "nativeName": "తెలుగు" },
+    "kn": { "name": "Kannada", "nativeName": "ಕನ್ನಡ" },
+    "zh": { "name": "Chinese", "nativeName": "中文" },
+    "fr": { "name": "French", "nativeName": "Français" }
+  }
+}
