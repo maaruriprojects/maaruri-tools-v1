@@ -1,0 +1,39 @@
+<footer class="mt-footer">
+  <div class="mt-footer__inner">
+    <div class="mt-footer__grid">
+      <div class="mt-footer__brand">
+        <div class="mt-footer__brand-mark">M</div>
+        <span class="mt-footer__brand-name">Maaruri Tools</span>
+      </div>
+      <p class="mt-footer__tagline">
+        Your one-stop destination for free online utility tools. Simple, fast, and
+        accessible from anywhere.
+      </p>
+
+      <div class="mt-footer__columns">
+        <div class="mt-footer__col">
+          <h3 class="mt-footer__col-title">Quick Links</h3>
+          <nav class="mt-footer__links">
+            <a routerLink="/" class="mt-footer__link">Home</a>
+            <a routerLink="/categories" class="mt-footer__link">Categories</a>
+          </nav>
+        </div>
+
+        <div class="mt-footer__col">
+          <h3 class="mt-footer__col-title">Legal</h3>
+          <nav class="mt-footer__links">
+            <a routerLink="/privacy-policy" class="mt-footer__link">Privacy Policy</a>
+            <a routerLink="/terms-of-service" class="mt-footer__link">Terms of Service</a>
+            <a routerLink="/cookie-policy" class="mt-footer__link">Cookie Policy</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-footer__bar">
+    <p class="mt-footer__copyright">
+      &copy; {{ year() }} Maaruri Tools. All rights reserved.
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,120 @@
+@use "../../../styles/breakpoints" as bp;
+
+:host {
+  display: block;
+  background: var(--mt-neutral-900);
+}
+
+.mt-footer {
+  &__inner {
+    max-width: var(--mt-content-max-width);
+    margin: 0 auto;
+    padding: var(--mt-space-10) var(--mt-space-5) var(--mt-space-6);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--mt-space-8);
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--mt-space-3);
+    margin-bottom: var(--mt-space-4);
+  }
+
+  &__brand-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--mt-radius-md);
+    background: linear-gradient(135deg, var(--mt-primary-500), var(--mt-primary-700));
+    color: #fff;
+    font-weight: var(--mt-font-bold);
+    font-size: var(--mt-text-xl);
+    letter-spacing: -0.02em;
+  }
+
+  &__brand-name {
+    font-size: var(--mt-text-lg);
+    font-weight: var(--mt-font-semibold);
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  &__tagline {
+    font-size: var(--mt-text-sm);
+    color: var(--mt-neutral-400);
+    line-height: var(--mt-leading-normal);
+    margin: 0;
+    max-width: 360px;
+  }
+
+  &__columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--mt-space-6);
+  }
+
+  &__col-title {
+    font-size: var(--mt-text-xs);
+    font-weight: var(--mt-font-semibold);
+    color: var(--mt-neutral-300);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 var(--mt-space-4);
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mt-space-3);
+  }
+
+  &__link {
+    font-size: var(--mt-text-sm);
+    font-weight: var(--mt-font-medium);
+    color: var(--mt-neutral-400);
+    text-decoration: none;
+    transition: color var(--mt-transition-fast);
+
+    &:hover {
+      color: var(--mt-primary-400);
+    }
+  }
+
+  &__bar {
+    border-top: 1px solid var(--mt-neutral-800);
+    padding: var(--mt-space-5) var(--mt-space-5);
+  text-align: center;
+  }
+
+  &__copyright {
+    font-size: var(--mt-text-xs);
+    color: var(--mt-neutral-500);
+    margin: 0;
+  }
+
+  // ── Responsive ──────────────────────────────────────────────
+  @include bp.tablet-down {
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: var(--mt-space-6);
+    }
+
+    &__columns {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @include bp.mobile {
+    &__columns {
+      grid-template-columns: 1fr;
+      gap: var(--mt-space-5);
+    }
+  }
+}
