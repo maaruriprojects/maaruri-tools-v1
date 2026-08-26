@@ -152,4 +152,8 @@ export class Header implements OnInit {
     const locale = this.locales().find((l) => l.countryCode === this.selectedCountry());
     return locale?.flag ?? '🏳️';
   }
+
+  getCurrentCountryFlagImage(): string | null {
+    return this.localeService.getFlagImage(this.selectedCountry());
+  }
 }

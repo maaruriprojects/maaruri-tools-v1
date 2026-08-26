@@ -137,7 +137,11 @@
     <!-- Country selector -->
     <div class="mt-country-selector">
       <button class="mt-country-selector__btn" (click)="toggleCountryPopup()" [class.is-open]="countryPopupOpen()">
-        <span class="mt-country-selector__flag">{{ getCurrentCountryFlag() }}</span>
+        @if (getCurrentCountryFlagImage(); as img) {
+          <img [src]="img" alt="" class="mt-country-selector__flag-img" />
+        } @else {
+          <span class="mt-country-selector__flag">{{ getCurrentCountryFlag() }}</span>
+        }
         <span class="mt-country-selector__code d-none d-sm-inline">{{ selectedCountry() }}</span>
         <svg class="mt-country-selector__chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
           <path d="M2.5 3.75L5 6.25L7.5 3.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -159,7 +163,11 @@
                   [checked]="tempSelectedCountry() === locale.countryCode"
                   (change)="onCountrySelect(locale.countryCode)"
                 />
-                <span class="mt-country-popup__flag">{{ locale.flag }}</span>
+                @if (locale.flagImage; as img) {
+                  <img [src]="img" alt="" class="mt-country-popup__flag-img" />
+                } @else {
+                  <span class="mt-country-popup__flag">{{ locale.flag }}</span>
+                }
                 <span class="mt-country-popup__name">{{ locale.countryName }}</span>
                 <span class="mt-country-popup__currency">{{ locale.currencySymbol }}</span>
               </label>

@@ -56,6 +56,8 @@ export interface Locale {
   countryCode: string;
   countryName: string;
   flag: string;
+  /** Path to the flag image file (SVG). Falls back to `flag` emoji if absent. */
+  flagImage?: string;
   currencyCode: string;
   currencySymbol: string;
   languages: string[];

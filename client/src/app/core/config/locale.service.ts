@@ -73,6 +73,11 @@ export class LocaleService {
     return this._locales().find((l) => l.countryCode === code)?.languages ?? [];
   }
 
+  /** Returns the flag image path for a country, or null if no image is configured. */
+  getFlagImage(code: string): string | null {
+    return this._locales().find((l) => l.countryCode === code)?.flagImage ?? null;
+  }
+
   private applyDefaults(): void {
     const code = this._selectedCountry();
     const locale = this._locales().find((l) => l.countryCode === code);
