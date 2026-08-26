@@ -3,7 +3,7 @@
 :host {
   position: fixed;
   top: var(--mt-header-height);
-  right: 0;
+  left: 0;
   z-index: 900;
 }
 
@@ -12,8 +12,8 @@
   width: 64px;
   height: calc(100vh - var(--mt-header-height));
   background: var(--mt-surface);
-  border-left: 1px solid var(--mt-border);
-  box-shadow: -2px 0 8px rgba(15, 23, 42, 0.04);
+  border-right: 1px solid var(--mt-border);
+  box-shadow: 2px 0 8px rgba(15, 23, 42, 0.04);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -196,7 +196,7 @@
 .mt-sidebar-fab {
   position: fixed;
   bottom: var(--mt-space-6);
-  right: var(--mt-space-5);
+  left: var(--mt-space-5);
   width: 48px;
   height: 48px;
   display: flex;
@@ -247,9 +247,9 @@
   .mt-sidebar {
     position: fixed;
     top: var(--mt-header-height);
-    right: 0;
+    left: 0;
     width: 240px;
-    transform: translateX(100%);
+    transform: translateX(-100%);
     transition: transform var(--mt-transition-base), box-shadow var(--mt-transition-base);
 
     &.is-mobile-open {
