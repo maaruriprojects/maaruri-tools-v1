@@ -3,6 +3,10 @@
 :host {
   display: block;
   background: var(--mt-neutral-900);
+
+  @include bp.desktop {
+    margin-left: var(--mt-sidebar-width-collapsed);
+  }
 }
 
 .mt-footer {
