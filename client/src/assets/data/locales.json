@@ -4,6 +4,7 @@
       "countryCode": "IN",
       "countryName": "India",
       "flag": "🇮🇳",
+      "flagImage": "/assets/images/flags/in.svg",
       "currencyCode": "INR",
       "currencySymbol": "₹",
       "languages": ["en", "hi", "te", "kn"]
@@ -12,6 +13,7 @@
       "countryCode": "US",
       "countryName": "United States",
       "flag": "🇺🇸",
+      "flagImage": "/assets/images/flags/us.svg",
       "currencyCode": "USD",
       "currencySymbol": "$",
       "languages": ["en"]
