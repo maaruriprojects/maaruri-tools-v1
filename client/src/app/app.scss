@@ -1,3 +1,5 @@
+@use "../styles/breakpoints" as bp;
+
 :host {
   display: block;
   min-height: 100vh;
@@ -7,4 +9,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  @include bp.desktop {
+    margin-left: var(--mt-sidebar-width-collapsed);
+  }
 }
