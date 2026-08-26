@@ -43,10 +43,14 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   white-space: nowrap;
+  overflow: hidden;
+  min-width: 0;
+  max-width: 0;
   opacity: 0;
-  transition: opacity var(--mt-transition-fast);
+  transition: opacity var(--mt-transition-fast), max-width var(--mt-transition-fast);
 
   .is-expanded & {
+    max-width: 160px;
     opacity: 1;
   }
 }
