@@ -71,7 +71,7 @@
 .mt-header__nav-link {
   display: inline-flex;
   align-items: center;
-  gap: var(--mt-space-2);
+  gap: var(--mt-space-3);
   padding: var(--mt-space-2) var(--mt-space-3);
   font-size: var(--mt-text-sm);
   font-weight: var(--mt-font-medium);
@@ -92,6 +92,11 @@
     color: var(--mt-primary);
     background: var(--mt-primary-50);
   }
+}
+
+.mt-header__nav-icon {
+  flex-shrink: 0;
+  color: inherit;
 }
 
 .mt-header__chevron {
@@ -553,7 +558,9 @@
   }
 
   &__link {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: var(--mt-space-3);
     padding: var(--mt-space-3) var(--mt-space-4);
     font-size: var(--mt-text-base);
     font-weight: var(--mt-font-medium);
@@ -566,6 +573,11 @@
       background: var(--mt-primary-50);
       color: var(--mt-primary-700);
     }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    color: inherit;
   }
 
   &__section {
