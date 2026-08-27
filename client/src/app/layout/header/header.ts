@@ -10,6 +10,7 @@ import { Category, Tool } from '../../shared/models';
 interface NavItem {
   label: string;
   link: string;
+  icon: 'home' | 'info' | 'envelope' | 'briefcase';
 }
 
 @Component({
@@ -33,10 +34,10 @@ export class Header implements OnInit {
   readonly currencySymbol = this.localeService.currencySymbol;
 
   readonly navItems: NavItem[] = [
-    { label: 'Home', link: '/' },
-    { label: 'About Us', link: '/about' },
-    { label: 'Contact Us', link: '/contact' },
-    { label: 'Opportunities', link: '/opportunities' },
+    { label: 'Home', link: '/', icon: 'home' },
+    { label: 'About Us', link: '/about', icon: 'info' },
+    { label: 'Contact Us', link: '/contact', icon: 'envelope' },
+    { label: 'Opportunities', link: '/opportunities', icon: 'briefcase' },
   ];
 
   readonly toolsMenuCategories = signal<Category[]>([]);
