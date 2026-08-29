@@ -1,39 +1,64 @@
 <footer class="mt-footer">
   <div class="mt-footer__inner">
     <div class="mt-footer__grid">
-      <div class="mt-footer__brand">
-        <div class="mt-footer__brand-mark">M</div>
-        <span class="mt-footer__brand-name">Maaruri Tools</span>
+      <!-- Brand + description + social -->
+      <div class="mt-footer__brand-col col-lg-4">
+        <div class="mt-footer__brand">
+          <i class="bi bi-tools"></i>
+          <span class="mt-footer__brand-name gradient-text">Maaruri Tools</span>
+        </div>
+        <p class="mt-footer__desc">
+          Your one-stop destination for free online utility tools. Simple, fast, and
+          accessible from anywhere.
+        </p>
+        <div class="mt-footer__social">
+          <a href="#" class="mt-footer__social-link" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="mt-footer__social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="mt-footer__social-link" aria-label="GitHub"><i class="bi bi-github"></i></a>
+          <a href="#" class="mt-footer__social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        </div>
       </div>
-      <p class="mt-footer__tagline">
-        Your one-stop destination for free online utility tools. Simple, fast, and
-        accessible from anywhere.
-      </p>
 
-      <div class="mt-footer__columns">
-        <div class="mt-footer__col">
-          <h3 class="mt-footer__col-title">Quick Links</h3>
-          <nav class="mt-footer__links">
-            <a routerLink="/" class="mt-footer__link">Home</a>
-            <a routerLink="/categories" class="mt-footer__link">Categories</a>
-          </nav>
-        </div>
+      <!-- Quick Links -->
+      <div class="mt-footer__col col-lg-2">
+        <h4 class="mt-footer__heading">Quick Links</h4>
+        <ul class="mt-footer__list">
+          <li><a routerLink="/" class="mt-footer__link">Home</a></li>
+          <li><a routerLink="/categories" class="mt-footer__link">Categories</a></li>
+        </ul>
+      </div>
 
-        <div class="mt-footer__col">
-          <h3 class="mt-footer__col-title">Legal</h3>
-          <nav class="mt-footer__links">
-            <a routerLink="/privacy-policy" class="mt-footer__link">Privacy Policy</a>
-            <a routerLink="/terms-of-service" class="mt-footer__link">Terms of Service</a>
-            <a routerLink="/cookie-policy" class="mt-footer__link">Cookie Policy</a>
-          </nav>
-        </div>
+      <!-- Categories -->
+      <div class="mt-footer__col col-lg-3">
+        <h4 class="mt-footer__heading">Categories</h4>
+        <ul class="mt-footer__list">
+          <li><a routerLink="/time-date-tools" class="mt-footer__link">Time &amp; Date Tools</a></li>
+          <li><a routerLink="/health-fitness" class="mt-footer__link">Health &amp; Fitness</a></li>
+          <li><a routerLink="/finance-money-tools" class="mt-footer__link">Finance &amp; Money</a></li>
+          <li><a routerLink="/converters-calculators" class="mt-footer__link">Converters &amp; Calculators</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div class="mt-footer__col col-lg-3">
+        <h4 class="mt-footer__heading">Legal</h4>
+        <ul class="mt-footer__list">
+          <li><a routerLink="/privacy-policy" class="mt-footer__link">Privacy Policy</a></li>
+          <li><a routerLink="/terms-of-service" class="mt-footer__link">Terms of Service</a></li>
+          <li><a routerLink="/cookie-policy" class="mt-footer__link">Cookie Policy</a></li>
+        </ul>
       </div>
     </div>
-  </div>
 
-  <div class="mt-footer__bar">
-    <p class="mt-footer__copyright">
-      &copy; {{ year() }} Maaruri Tools. All rights reserved.
-    </p>
+    <div class="mt-footer__divider"></div>
+
+    <div class="mt-footer__bar">
+      <p class="mt-footer__copyright">
+        &copy; {{ year() }} Maaruri Tools. All rights reserved.
+      </p>
+      <p class="mt-footer__made-with">
+        Made with <i class="bi bi-heart-fill" style="color: #ef4444;"></i> for productivity
+      </p>
+    </div>
   </div>
 </footer>
