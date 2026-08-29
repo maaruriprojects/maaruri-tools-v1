@@ -1,40 +1,57 @@
 :host {
   display: block;
   width: 100%;
+  margin: 1.5rem 0;
 }
 
 .mt-ad-banner {
   display: block;
   width: 100%;
-  min-height: 90px;
-  border: 1px solid var(--mt-ad-border);
-  border-radius: var(--mt-radius-md);
-  background: var(--mt-ad-bg);
+  min-height: 120px;
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+  transition: border-color var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
 
-  @media (max-width: 767.98px) {
-    min-height: 120px;
+  &:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+  }
+
+  @media (max-width: 768px) {
+    min-height: 100px;
   }
 }
 
 .mt-ad-banner__placeholder {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 90px;
+  min-height: 120px;
   width: 100%;
-  border: 1px solid var(--mt-ad-border);
-  border-radius: var(--mt-radius-md);
-  background: var(--mt-ad-bg);
+  gap: 0.25rem;
 
-  @media (max-width: 767.98px) {
-    min-height: 120px;
+  @media (max-width: 768px) {
+    min-height: 100px;
   }
 }
 
+.mt-ad-placeholder__icon {
+  font-size: 2.5rem;
+  opacity: 0.5;
+  color: var(--text-secondary);
+}
+
 .mt-ad-placeholder__label {
-  font-size: var(--mt-text-xs);
-  font-weight: var(--mt-font-medium);
-  color: var(--mt-neutral-400);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.mt-ad-placeholder__subtext {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  color: var(--text-secondary);
 }

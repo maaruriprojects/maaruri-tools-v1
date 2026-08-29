@@ -6,10 +6,12 @@
 @use "styles/breakpoints";
 @use "styles/theme";
 
-// ── Base resets & defaults ───────────────────────────────────
+// ── Universal reset ──────────────────────────────────────────
 *,
 *::before,
 *::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -19,55 +21,204 @@ html {
 }
 
 body {
-  margin: 0;
   min-height: 100vh;
-  font-family: var(--mt-font-sans);
-  font-size: var(--mt-text-base);
-  line-height: var(--mt-leading-normal);
-  color: var(--mt-text);
-  background-color: var(--mt-bg);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease;
 }
 
+// ── Typography ───────────────────────────────────────────────
 h1, h2, h3, h4, h5, h6 {
-  color: var(--mt-heading);
-  font-weight: var(--mt-font-semibold);
-  line-height: var(--mt-leading-tight);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
 }
+
+h1 { font-size: 2.5rem; font-weight: 800; }
+h2 { font-size: 2rem; font-weight: 800; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.25rem; font-weight: 700; }
+h5 { font-size: 1.1rem; }
+h6 { font-size: 1rem; }
+
+.hero-title { font-size: 3rem; font-weight: 800; }
+.section-title { font-size: 2.5rem; font-weight: 800; }
+.page-title { font-size: 2.5rem; font-weight: 800; }
+.card-title { font-size: 1.25rem; font-weight: 700; }
 
 a {
-  color: var(--mt-primary);
+  color: var(--primary-color);
   text-decoration: none;
-  transition: color var(--mt-transition-fast);
+  transition: color var(--transition-speed) ease;
 
   &:hover {
-    color: var(--mt-primary-dark);
+    color: var(--secondary-color);
   }
 }
 
-// ── Utility classes ─────────────────────────────────────────
-.mt-container {
-  width: 100%;
-  max-width: var(--mt-content-max-width);
-  margin-inline: auto;
-  padding-inline: var(--mt-space-5);
+// ── Utility classes ──────────────────────────────────────────
+.text-primary { color: var(--text-primary) !important; }
+.text-secondary { color: var(--text-secondary) !important; }
+.bg-primary { background-color: var(--bg-primary) !important; }
+.bg-secondary { background-color: var(--bg-secondary) !important; }
+.bg-tertiary { background-color: var(--bg-tertiary) !important; }
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
 }
 
+.gradient-bg {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+// ── Container ────────────────────────────────────────────────
+.mt-container {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+// ── Card ─────────────────────────────────────────────────────
 .mt-card {
-  background: var(--mt-surface);
-  border: 1px solid var(--mt-border);
-  border-radius: var(--mt-radius-lg);
-  box-shadow: var(--mt-shadow-sm);
-  transition: box-shadow var(--mt-transition-base), transform var(--mt-transition-base);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
 
   &:hover {
-    box-shadow: var(--mt-shadow-md);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
   }
 }
 
 .mt-text-muted {
-  color: var(--mt-text-muted);
+  color: var(--text-secondary);
+}
+
+// ── Buttons ──────────────────────────────────────────────────
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.625rem 1.25rem;
+  font-weight: 600;
+  transition: all var(--transition-speed) ease;
+
+  &:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.625rem 1.25rem;
+  font-weight: 600;
+  transition: all var(--transition-speed) ease;
+
+  &:hover {
+    background-color: var(--secondary-dark);
+    border-color: var(--secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+.btn-outline-primary {
+  background-color: transparent;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  border-radius: 8px;
+  padding: 0.625rem 1.25rem;
+  font-weight: 600;
+  transition: all var(--transition-speed) ease;
+
+  &:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+  }
+}
+
+// ── Form elements ────────────────────────────────────────────
+input, select, textarea {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  transition: border-color var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
+
+  &:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+    outline: none;
+  }
+}
+
+// ── Badges ───────────────────────────────────────────────────
+.badge {
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+
+// ── Footer global margin ─────────────────────────────────────
+footer {
+  margin-top: 4rem;
+}
+
+// ── Animations ───────────────────────────────────────────────
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }
 
 // ── Scrollbar styling ───────────────────────────────────────
@@ -77,20 +228,45 @@ a {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--mt-neutral-100);
+  background: var(--bg-tertiary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--mt-neutral-300);
-  border-radius: var(--mt-radius-full);
+  background: var(--border-color);
+  border-radius: 9999px;
 
   &:hover {
-    background: var(--mt-neutral-400);
+    background: var(--text-secondary);
   }
 }
 
 // ── Focus visibility ───────────────────────────────────────
 :focus-visible {
-  outline: 2px solid var(--mt-primary);
+  outline: 2px solid var(--primary-color);
   outline-offset: 2px;
+}
+
+// ── Responsive ───────────────────────────────────────────────
+@media (max-width: 992px) {
+  .hero-title { font-size: 2.5rem; }
+  .section-title { font-size: 2rem; }
+  .page-title { font-size: 2rem; }
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  .hero-title { font-size: 2rem; }
+  .section-title { font-size: 1.75rem; }
+  .page-title { font-size: 1.75rem; }
+
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 1.75rem; }
+  .section-title { font-size: 1.5rem; }
+  .page-title { font-size: 1.5rem; }
 }

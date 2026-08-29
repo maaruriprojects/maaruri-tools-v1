@@ -1,16 +1,15 @@
-@use "../styles/breakpoints" as bp;
-
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
 .mt-app-shell {
-  min-height: 100vh;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
 
-  @include bp.desktop {
-    margin-left: var(--mt-sidebar-width-collapsed);
+  @media (min-width: 1024px) {
+    margin-left: var(--sidebar-width-collapsed);
   }
 }

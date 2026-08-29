@@ -1,146 +1,184 @@
 // ============================================================
 // Maaruri Tools — Design Tokens
-// Modern teal/emerald primary, warm amber accent, slate neutrals
+// Blue primary, green secondary, amber accent, slate neutrals
+// Light + Dark theme support via [data-theme="dark"]
 // ============================================================
 
 :root {
-  // ── Primary (Teal / Emerald) ──────────────────────────────
-  --mt-primary-50:  #f0fdfa;
-  --mt-primary-100: #ccfbf1;
-  --mt-primary-200: #99f6e4;
-  --mt-primary-300: #5eead4;
-  --mt-primary-400: #2dd4bf;
-  --mt-primary-500: #14b8a6;
-  --mt-primary-600: #0d9488;
-  --mt-primary-700: #0f766e;
-  --mt-primary-800: #115e59;
-  --mt-primary-900: #134e4a;
+  // ── Primary (Blue) ─────────────────────────────────────────
+  --primary-color:   #2563eb;
+  --primary-dark:    #1d4ed8;
+  --primary-light:   #dbeafe;
 
-  // ── Accent (Amber) ────────────────────────────────────────
-  --mt-accent-50:  #fffbeb;
-  --mt-accent-100: #fef3c7;
-  --mt-accent-200: #fde68a;
-  --mt-accent-300: #fcd34d;
-  --mt-accent-400: #fbbf24;
-  --mt-accent-500: #f59e0b;
-  --mt-accent-600: #d97706;
-  --mt-accent-700: #b45309;
-  --mt-accent-800: #92400e;
+  // ── Secondary (Green) ─────────────────────────────────────
+  --secondary-color: #10b981;
+  --secondary-dark:  #059669;
+  --secondary-light: #d1fae5;
 
-  // ── Neutrals (Slate) ───────────────────────────────────────
-  --mt-neutral-50:  #f8fafc;
-  --mt-neutral-100: #f1f5f9;
-  --mt-neutral-200: #e2e8f0;
-  --mt-neutral-300: #cbd5e1;
-  --mt-neutral-400: #94a3b8;
-  --mt-neutral-500: #64748b;
-  --mt-neutral-600: #475569;
-  --mt-neutral-700: #334155;
-  --mt-neutral-800: #1e293b;
-  --mt-neutral-900: #0f172a;
+  // ── Accent (Amber) ─────────────────────────────────────────
+  --accent-color:    #f59e0b;
+  --accent-dark:    #d97706;
 
-  // ── Semantic colors ───────────────────────────────────────
-  --mt-success-50:  #f0fdf4;
-  --mt-success-500: #22c55e;
-  --mt-success-600: #16a34a;
-  --mt-success-700: #15803d;
+  // ── Text ───────────────────────────────────────────────────
+  --text-primary:    #1f2937;
+  --text-secondary:  #6b7280;
 
-  --mt-warning-50:  #fffbeb;
-  --mt-warning-500: #f59e0b;
-  --mt-warning-600: #d97706;
+  // ── Backgrounds ────────────────────────────────────────────
+  --bg-primary:      #ffffff;
+  --bg-secondary:    #f9fafb;
+  --bg-tertiary:     #f3f4f6;
 
-  --mt-error-50:    #fef2f2;
-  --mt-error-500:   #ef4444;
-  --mt-error-600:   #dc2626;
-  --mt-error-700:   #b91c1c;
+  // ── Borders ────────────────────────────────────────────────
+  --border-color:    #e5e7eb;
 
-  --mt-info-50:     #ecfeff;
-  --mt-info-500:    #06b6d4;
-  --mt-info-600:    #0891b2;
+  // ── Shadows ────────────────────────────────────────────────
+  --shadow-sm:  0 1px 2px 0 rgba(0,0,0,0.05);
+  --shadow-md:  0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+  --shadow-lg:  0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+  --shadow-xl:  0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
 
-  // ── Aliases ───────────────────────────────────────────────
-  --mt-primary:   var(--mt-primary-600);
-  --mt-primary-light: var(--mt-primary-100);
-  --mt-primary-dark:  var(--mt-primary-800);
-  --mt-accent:    var(--mt-accent-500);
-  --mt-accent-dark: var(--mt-accent-700);
+  // ── Transition ─────────────────────────────────────────────
+  --transition-speed: 0.3s;
 
-  --mt-bg:        var(--mt-neutral-50);
-  --mt-surface:   #ffffff;
-  --mt-text:      var(--mt-neutral-800);
-  --mt-text-muted: var(--mt-neutral-500);
-  --mt-heading:   var(--mt-neutral-900);
-  --mt-border:    var(--mt-neutral-200);
-  --mt-border-strong: var(--mt-neutral-300);
+  // ── Typography ─────────────────────────────────────────────
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Courier New", monospace;
 
-  // ── Spacing (8px base) ────────────────────────────────────
-  --mt-space-0:  0;
-  --mt-space-1:  0.125rem;  // 2px
-  --mt-space-2:  0.25rem;   // 4px
-  --mt-space-3:  0.5rem;    // 8px
-  --mt-space-4:  0.75rem;   // 12px
-  --mt-space-5:  1rem;      // 16px
-  --mt-space-6:  1.5rem;    // 24px
-  --mt-space-7:  2rem;      // 32px
-  --mt-space-8:  2.5rem;    // 40px
-  --mt-space-9:  3rem;      // 48px
-  --mt-space-10: 4rem;      // 64px
-  --mt-space-11: 5rem;      // 80px
-  --mt-space-12: 6rem;      // 96px
+  // ── Layout ─────────────────────────────────────────────────
+  --header-height: 64px;
+  --sidebar-width-collapsed: 64px;
+  --sidebar-width-expanded: 240px;
+  --content-max-width: 1280px;
 
-  // ── Typography ────────────────────────────────────────────
-  --mt-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
-  --mt-font-mono: "JetBrains Mono", "Fira Code", "SF Mono", Consolas,
-    "Liberation Mono", Menlo, monospace;
-
-  --mt-text-xs:   0.75rem;    // 12px
-  --mt-text-sm:   0.875rem;   // 14px
-  --mt-text-base: 1rem;       // 16px
-  --mt-text-lg:   1.125rem;   // 18px
-  --mt-text-xl:   1.25rem;    // 20px
-  --mt-text-2xl:  1.5rem;     // 24px
-  --mt-text-3xl:  1.875rem;   // 30px
-  --mt-text-4xl:  2.25rem;    // 36px
-  --mt-text-5xl:  3rem;       // 48px
-
-  --mt-font-normal:   400;
+  // ── Backward-compatible aliases (old --mt-* names) ──────────
+  --mt-primary:        var(--primary-color);
+  --mt-primary-50:     #eff6ff;
+  --mt-primary-100:    #dbeafe;
+  --mt-primary-300:    #93c5fd;
+  --mt-primary-400:    #60a5fa;
+  --mt-primary-500:    #3b82f6;
+  --mt-primary-700:    #1d4ed8;
+  --mt-primary-800:    #1e40af;
+  --mt-secondary:      var(--secondary-color);
+  --mt-accent:         var(--accent-color);
+  --mt-accent-50:     #fffbeb;
+  --mt-accent-100:    #fef3c7;
+  --mt-accent-600:    #d97706;
+  --mt-accent-700:    #b45309;
+  --mt-text:           var(--text-primary);
+  --mt-text-muted:     var(--text-secondary);
+  --mt-heading:        var(--text-primary);
+  --mt-surface:        var(--bg-primary);
+  --mt-border:         var(--border-color);
+  --mt-border-strong:  #d1d5db;
+  --mt-neutral-50:     var(--bg-secondary);
+  --mt-neutral-100:    var(--bg-tertiary);
+  --mt-neutral-200:    #e5e7eb;
+  --mt-neutral-300:   #d1d5db;
+  --mt-neutral-400:   #9ca3af;
+  --mt-neutral-500:   #6b7280;
+  --mt-neutral-600:   #4b5563;
+  --mt-neutral-900:   #111827;
+  --mt-success:       var(--secondary-color);
+  --mt-success-50:    #ecfdf5;
+  --mt-success-700:   #047857;
+  --mt-warning:       var(--accent-color);
+  --mt-error:         #ef4444;
+  --mt-error-700:     #b91c1c;
+  --mt-shadow-md:     var(--shadow-md);
+  --mt-shadow-lg:     var(--shadow-lg);
+  --mt-shadow-xl:     var(--shadow-xl);
+  --mt-font-sans:     var(--font-sans);
+  --mt-font-mono:     var(--font-mono);
   --mt-font-medium:   500;
   --mt-font-semibold: 600;
   --mt-font-bold:     700;
+  --mt-text-xs:       0.85rem;
+  --mt-text-sm:       0.95rem;
+  --mt-text-base:     1rem;
+  --mt-text-lg:       1.1rem;
+  --mt-text-xl:       1.25rem;
+  --mt-text-2xl:      1.5rem;
+  --mt-text-3xl:      1.75rem;
+  --mt-text-4xl:      2.5rem;
+  --mt-space-1:       0.25rem;
+  --mt-space-2:       0.5rem;
+  --mt-space-3:       0.75rem;
+  --mt-space-4:       1rem;
+  --mt-space-5:       1.25rem;
+  --mt-space-6:       1.5rem;
+  --mt-space-7:       1.75rem;
+  --mt-space-8:       2rem;
+  --mt-space-10:      2.5rem;
+  --mt-radius-sm:     4px;
+  --mt-radius-md:     8px;
+  --mt-radius-lg:     12px;
+  --mt-radius-full:   9999px;
+  --mt-transition-fast:  var(--transition-speed) ease;
+  --mt-transition-base:  var(--transition-speed) ease;
+  --mt-leading-tight:   1.2;
+  --mt-leading-normal:  1.6;
+  --mt-leading-relaxed: 1.7;
+  --mt-content-max-width: var(--content-max-width);
+  --mt-header-height:  var(--header-height);
+  --mt-sidebar-width-collapsed: var(--sidebar-width-collapsed);
+  --mt-sidebar-width-expanded: var(--sidebar-width-expanded);
+  --mt-ad-bg:     var(--bg-tertiary);
+  --mt-ad-border: var(--border-color);
+}
 
-  --mt-leading-tight:  1.2;
-  --mt-leading-normal: 1.5;
-  --mt-leading-relaxed: 1.75;
+// ── Dark Theme ────────────────────────────────────────────────
+[data-theme="dark"] {
+  --primary-color:   #3b82f6;
+  --primary-dark:    #2563eb;
+  --primary-light:   #1e3a5f;
 
-  // ── Border radius ─────────────────────────────────────────
-  --mt-radius-sm: 0.375rem;   // 6px
-  --mt-radius-md: 0.5rem;     // 8px
-  --mt-radius-lg: 0.75rem;    // 12px
-  --mt-radius-xl: 1rem;       // 16px
-  --mt-radius-2xl: 1.5rem;    // 24px
-  --mt-radius-full: 9999px;
+  --secondary-color: #34d399;
+  --secondary-dark:  #10b981;
+  --secondary-light: #064e3b;
 
-  // ── Shadows ────────────────────────────────────────────────
-  --mt-shadow-sm:  0 1px 2px 0 rgba(15, 23, 42, 0.05);
-  --mt-shadow-md:  0 4px 6px -1px rgba(15, 23, 42, 0.07),
-                   0 2px 4px -2px rgba(15, 23, 42, 0.05);
-  --mt-shadow-lg:  0 10px 15px -3px rgba(15, 23, 42, 0.08),
-                   0 4px 6px -4px rgba(15, 23, 42, 0.05);
-  --mt-shadow-xl:  0 20px 25px -5px rgba(15, 23, 42, 0.1),
-                   0 8px 10px -6px rgba(15, 23, 42, 0.05);
+  --accent-color:    #fbbf24;
+  --accent-dark:    #f59e0b;
 
-  // ── Transitions ───────────────────────────────────────────
-  --mt-transition-fast: 150ms ease;
-  --mt-transition-base: 250ms ease;
-  --mt-transition-slow: 400ms ease;
+  --text-primary:    #f9fafb;
+  --text-secondary:  #d1d5db;
 
-  // ── Layout ────────────────────────────────────────────────
-  --mt-header-height: 64px;
-  --mt-sidebar-width-collapsed: 64px;
-  --mt-sidebar-width-expanded: 240px;
-  --mt-content-max-width: 1280px;
-  --mt-ad-border: #dcdcdc;
-  --mt-ad-bg: #fafafa;
+  --bg-primary:      #111827;
+  --bg-secondary:    #1f2937;
+  --bg-tertiary:     #374151;
+
+  --border-color:    #4b5563;
+
+  --shadow-sm:  0 1px 2px 0 rgba(0,0,0,0.5);
+  --shadow-md:  0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -1px rgba(0,0,0,0.3);
+  --shadow-lg:  0 10px 15px -3px rgba(0,0,0,0.4), 0 4px 6px -2px rgba(0,0,0,0.3);
+  --shadow-xl:  0 20px 25px -5px rgba(0,0,0,0.5), 0 10px 10px -5px rgba(0,0,0,0.4);
+
+  // ── Backward-compatible aliases (old --mt-* names) ──────────
+  --mt-primary-50:     #1e3a5f;
+  --mt-primary-100:    #1e40af;
+  --mt-primary-300:    #1d4ed8;
+  --mt-primary-400:    #2563eb;
+  --mt-primary-500:    #3b82f6;
+  --mt-primary-700:    #60a5fa;
+  --mt-primary-800:    #93c5fd;
+  --mt-accent-50:     #1f2937;
+  --mt-accent-100:    #374151;
+  --mt-accent-600:    #f59e0b;
+  --mt-accent-700:    #fbbf24;
+  --mt-border-strong:  #4b5563;
+  --mt-neutral-50:     var(--bg-secondary);
+  --mt-neutral-100:    var(--bg-tertiary);
+  --mt-neutral-200:    #374151;
+  --mt-neutral-300:   #4b5563;
+  --mt-neutral-400:   #6b7280;
+  --mt-neutral-500:   #9ca3af;
+  --mt-neutral-600:   #d1d5db;
+  --mt-neutral-900:   #f9fafb;
+  --mt-success-50:    #064e3b;
+  --mt-success-700:   #34d399;
+  --mt-error-700:     #ef4444;
+  --mt-ad-bg:     var(--bg-tertiary);
+  --mt-ad-border: var(--border-color);
 }

@@ -5,45 +5,43 @@
 // ============================================================
 
 @use "bootstrap/scss/bootstrap" with (
-  // Primary — deep teal/emerald
-  $primary:   #0d9488,
+  // Primary — blue
+  $primary:   #2563eb,
 
-  // Secondary — slate neutral
-  $secondary: #64748b,
+  // Secondary — green
+  $secondary: #10b981,
 
-  // Accent — warm amber (mapped to Bootstrap "warning" for CTA reuse)
+  // Accent — amber (mapped to Bootstrap "warning")
   $warning:   #f59e0b,
 
   // Semantic
-  $success:   #16a34a,
-  $danger:    #dc2626,
-  $info:      #06b6d4,
+  $success:   #10b981,
+  $danger:    #ef4444,
+  $info:      #3b82f6,
 
   // Neutrals
-  $body-bg:     #f8fafc,
-  $body-color:  #1e293b,
-  $border-color: #e2e8f0,
+  $body-bg:     #f9fafb,
+  $body-color:  #1f2937,
+  $border-color: #e5e7eb,
 
   // Typography
-  $font-family-sans-serif: ("Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"),
-  $headings-font-family: ("Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif),
-  $headings-color: #0f172a,
-  $headings-font-weight: 600,
-  //$body-font-weight: 400,
+  $font-family-sans-serif: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+  $headings-font-weight: 700,
+  $headings-line-height: 1.2,
   $font-weight-base: 400,
 
-  // Radii — soft, rounded
+  // Radii
   $border-radius:    0.5rem,
   $border-radius-sm:  0.375rem,
   $border-radius-lg:  0.75rem,
   $border-radius-xl:  1rem,
 
-  // Shadows via Bootstrap's shadow system
+  // Shadows
   $enable-shadows: true,
 
   // Links
-  $link-color:         #0d9488,
-  $link-hover-color:   #0f766e,
+  $link-color:         #2563eb,
+  $link-hover-color:   #10b981,
   $link-decoration:    none,
-  $link-hover-decoration: underline
+  $link-hover-decoration: none
 );
