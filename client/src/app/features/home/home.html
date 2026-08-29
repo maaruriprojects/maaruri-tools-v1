@@ -1,104 +1,148 @@
 <!-- ── Hero section ─────────────────────────────────────────── -->
-<section class="mt-home-hero">
-  <div class="mt-container">
-    <div class="mt-home-hero__inner">
-      <div class="mt-home-hero__text">
-        <span class="mt-home-hero__badge">{{ stats().totalTools }}+ tools across {{ stats().totalCategories }} categories</span>
-        <h1 class="mt-home-hero__title">
-          Free Online Tools for
-          <span class="mt-home-hero__title-accent">Everyday Tasks</span>
-        </h1>
-        <p class="mt-home-hero__subtitle">
-          Calculators, converters, timers, clocks, and more — fast, private, and
-          works directly in your browser. No signup, no download.
-        </p>
-        <div class="mt-home-hero__actions">
-          <a class="mt-home-hero__cta" routerLink="/time-date-tools">Explore Tools</a>
-          <a class="mt-home-hero__link" routerLink="/about">Learn More</a>
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <div class="fade-in">
+          <span class="badge hero-badge">
+            <i class="bi bi-stars me-2"></i>Free Online Tools
+          </span>
+          <h1 class="hero-title">
+            Powerful <span class="gradient-text">Utility Tools</span> at Your Fingertips
+          </h1>
+          <p class="hero-description">
+            Access a growing collection of free, fast, and user-friendly tools designed to
+            boost your productivity. No sign-up required, works on all devices.
+          </p>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h3 class="stat-number gradient-text">{{ tools().length }}+</h3>
+              <p class="stat-label">Active Tools</p>
+            </div>
+            <div class="stat-item">
+              <h3 class="stat-number gradient-text">100%</h3>
+              <p class="stat-label">Free Forever</p>
+            </div>
+            <div class="stat-item">
+              <h3 class="stat-number gradient-text">24/7</h3>
+              <p class="stat-label">Available</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="mt-home-hero__ad">
-        <app-ad-auto slot="0000000000" />
+      <div class="col-lg-6">
+        <div class="hero-visual">
+          <div class="card visual-card">
+            <div class="visual-pulse"></div>
+            <div class="visual-content">
+              <i class="bi bi-tools visual-icon float"></i>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── SEO intro block ──────────────────────────────────────── -->
-<section class="mt-home-intro">
-  <div class="mt-container">
-    <div class="mt-home-intro__text">
-      <h2 class="mt-home-intro__heading">Your Toolbox for Everything</h2>
-      <p class="mt-home-intro__body">
-        Maaruri Tools brings together a growing collection of free online utility tools —
-        from <strong>age calculators</strong> and <strong>BMI calculators</strong> to
-        <strong>digital clocks</strong>, <strong>word counters</strong>, <strong>height converters</strong>,
-        and <strong>auto loan calculators</strong>. Every tool runs entirely in your browser,
-        so your data never leaves your device. No accounts, no downloads, no clutter —
-        just open a page and get your answer instantly.
-      </p>
-    </div>
-  </div>
-</section>
+<!-- ── Ad banner ────────────────────────────────────────────── -->
+<app-ad-banner slot="0000000000" />
 
-<!-- ── Category grid ───────────────────────────────────────── -->
-<section class="mt-home-categories">
-  <div class="mt-container">
-    <h2 class="mt-home-section-title">Browse by Category</h2>
-    <p class="mt-home-section-subtitle">11 categories covering everything from time and health to finance and productivity.</p>
-
-    <div class="mt-home-categories__grid">
+<!-- ── Categories section ───────────────────────────────────── -->
+<section class="categories-section">
+  <div class="container">
+    <h2 class="section-title text-center mb-5">Explore Categories</h2>
+    <div class="row g-4">
       @for (category of categories(); track category.slug) {
-        <a
-          class="mt-home-cat-card mt-card"
-          [routerLink]="'/' + category.slug"
-          [class.mt-home-cat-card--empty]="getToolCount(category.slug) === 0"
-        >
-          <span class="mt-home-cat-card__icon">{{ getIcon(category.icon) }}</span>
-          <div class="mt-home-cat-card__body">
-            <h3 class="mt-home-cat-card__name">{{ category.name }}</h3>
-            <p class="mt-home-cat-card__desc">{{ category.description }}</p>
-          </div>
-          @if (getToolCount(category.slug) > 0) {
-            <span class="mt-home-cat-card__count">{{ getToolCount(category.slug) }}</span>
-          } @else {
-            <span class="mt-home-cat-card__soon">Coming Soon</span>
-          }
-        </a>
+        <div class="col-lg-3 col-md-6">
+          <a class="card h-100 category-card" [routerLink]="'/' + category.slug">
+            <div class="card-body text-center">
+              <div class="category-icon-wrapper" [style.background]="'linear-gradient(135deg, var(--primary-color), var(--secondary-color))'">
+                <i class="bi" [class]="'bi-' + category.icon"></i>
+              </div>
+              <h5 class="category-name">{{ category.name }}</h5>
+              <p class="category-count">{{ getToolCount(category.slug) }} tools</p>
+            </div>
+          </a>
+        </div>
       }
     </div>
   </div>
 </section>
 
-<!-- ── Featured tools ──────────────────────────────────────── -->
-@if (featuredTools().length > 0) {
-  <section class="mt-home-featured">
-    <div class="mt-container">
-      <h2 class="mt-home-section-title">Featured Tools</h2>
-      <p class="mt-home-section-subtitle">Quick access to our most popular free online tools.</p>
-
-      <div class="mt-home-featured__grid">
-        @for (tool of featuredTools(); track tool.id) {
-          <a
-            class="mt-home-tool-card mt-card"
-            [routerLink]="'/' + tool.categorySlug + '/' + tool.slug"
-          >
-            <span class="mt-home-tool-card__icon">{{ getIcon(tool.icon) }}</span>
-            <div class="mt-home-tool-card__body">
-              <h3 class="mt-home-tool-card__name">{{ tool.name }}</h3>
-              <p class="mt-home-tool-card__desc">{{ tool.shortDescription }}</p>
+<!-- ── Featured tools section ───────────────────────────────── -->
+<section class="tools-section">
+  <div class="container">
+    <div class="section-header text-center mb-5">
+      <h2 class="section-title">Featured Tools</h2>
+      <p class="section-subtitle">Start using our most popular tools right now</p>
+    </div>
+    <div class="row g-4">
+      @for (tool of featuredTools(); track tool.id) {
+        <div class="col-lg-4 col-md-6">
+          <a class="card h-100 tool-card" [routerLink]="'/' + tool.categorySlug + '/' + tool.slug">
+            <div class="tool-card__top-bar"></div>
+            <div class="card-body">
+              <div class="tool-card__icon-wrapper">
+                <i class="bi" [class]="'bi-' + tool.icon"></i>
+              </div>
+              <span class="tool-card__category-badge">{{ tool.categorySlug }}</span>
+              <h5 class="tool-card__title">{{ tool.name }}</h5>
+              <p class="tool-card__description">{{ tool.shortDescription }}</p>
+              <span class="tool-card__cta">
+                Try it now <i class="bi bi-arrow-right ms-2"></i>
+              </span>
             </div>
-            <span class="mt-home-tool-card__arrow">&rarr;</span>
           </a>
-        }
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Second ad banner ─────────────────────────────────────── -->
+<app-ad-banner slot="0000000000" />
+
+<!-- ── Features section ─────────────────────────────────────── -->
+<section class="features-section">
+  <div class="container">
+    <h2 class="section-title text-center mb-5">Why Choose ToolsHub?</h2>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="card feature-card text-center">
+          <div class="feature-icon-wrapper">
+            <i class="bi bi-lightning-charge feature-icon"></i>
+          </div>
+          <h5 class="feature-title">Lightning Fast</h5>
+          <p class="feature-description">Optimized for speed and performance on all devices</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="card feature-card text-center">
+          <div class="feature-icon-wrapper">
+            <i class="bi bi-shield-check feature-icon"></i>
+          </div>
+          <h5 class="feature-title">Secure &amp; Private</h5>
+          <p class="feature-description">Your data stays private, no tracking or storage</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="card feature-card text-center">
+          <div class="feature-icon-wrapper">
+            <i class="bi bi-phone feature-icon"></i>
+          </div>
+          <h5 class="feature-title">Mobile Friendly</h5>
+          <p class="feature-description">Works perfectly on smartphones and tablets</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="card feature-card text-center">
+          <div class="feature-icon-wrapper">
+            <i class="bi bi-stars feature-icon"></i>
+          </div>
+          <h5 class="feature-title">Always Free</h5>
+          <p class="feature-description">No hidden costs, no subscriptions required</p>
+        </div>
       </div>
     </div>
-  </section>
-}
-
-<!-- ── Bottom banner ad ─────────────────────────────────────── -->
-<div class="mt-home-bottom-ad">
-  <div class="mt-container">
-    <app-ad-banner slot="0000000000" />
   </div>
-</div>
+</section>
