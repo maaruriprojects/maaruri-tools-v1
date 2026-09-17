@@ -2,239 +2,157 @@
 
 :host {
   display: block;
+  min-height: 100vh;
 }
 
-// ── Hero ────────────────────────────────────────────────────
-.mt-tool-hero {
-  padding: 1.5rem 1rem 1.25rem;
+// ── Page header ──────────────────────────────────────────────
+.tool-page-header {
+  text-align: center;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
   background: var(--bg-primary);
-  border-bottom: 1px solid var(--border-color);
 }
 
-.mt-tool-breadcrumb {
+.tool-page-title {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin-bottom: 1rem;
-
-  a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color var(--transition-speed) ease;
-
-    &:hover { color: var(--primary-color); }
-  }
-
-  &__sep { color: var(--border-color); }
-  &__current { color: var(--text-primary); font-weight: 500; }
-}
-
-.mt-tool-hero__content {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.25rem;
-  margin-bottom: 1.25rem;
-}
-
-.mt-tool-hero__icon {
-  font-size: 3rem;
-  flex-shrink: 0;
-  line-height: 1;
-}
-
-.mt-tool-hero__title {
+  justify-content: center;
+  gap: 1rem;
   font-size: 2.5rem;
   font-weight: 800;
   color: var(--text-primary);
-  margin: 0 0 0.5rem;
+  margin: 0;
+
+  i {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+  }
 
   @include bp.mobile {
-    font-size: 1.75rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 2rem;
+
+    i {
+      font-size: 2rem;
+    }
   }
 }
 
-.mt-tool-hero__desc {
-  font-size: 1rem;
+.tool-page-description {
+  font-size: 1.1rem;
   color: var(--text-secondary);
   margin: 0;
 }
 
-.mt-tool-hero__ad {
-  margin-top: 1rem;
+// ── Tool container ───────────────────────────────────────────
+.tool-container-section {
+  padding: 0 0 2rem;
 }
 
-// ── Workspace layout ────────────────────────────────────────
-.mt-tool-workspace {
-  padding: 1.5rem 1rem;
-}
-
-.mt-tool-layout {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 1.5rem;
+.tool-container-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, var(--bg-primary), var(--bg-tertiary));
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
 
   &--full {
-    grid-template-columns: 1fr;
+    max-width: 700px;
   }
 
-  @include bp.tablet-down {
-    grid-template-columns: 1fr;
-  }
-}
-
-.mt-tool-layout__main {
-  min-width: 0;
-}
-
-.mt-tool-layout__sidebar {
-  @include bp.tablet-down {
-    display: none;
-  }
-}
-
-.mt-tool-layout__ad-below {
-  margin-top: 1.5rem;
-  display: none;
-
-  @include bp.tablet-down {
-    display: block;
+  &__body {
+    padding: 2rem;
+  min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
 // ── Tool placeholder ─────────────────────────────────────────
-.mt-tool-workspace-card {
-  padding: 2rem;
-  min-height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.mt-tool-placeholder {
+.tool-placeholder {
   text-align: center;
-
-  &__icon {
-    font-size: 3rem;
-    display: block;
-    margin-bottom: 1rem;
-    opacity: 0.5;
-  }
 
   &__text {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin: 0 0 0.5rem;
-  }
-
-  &__hint {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
     margin: 0;
   }
 }
 
-// ── Content blocks ───────────────────────────────────────────
-.mt-tool-content {
-  padding: 1.5rem 1rem;
+// ── Info section ─────────────────────────────────────────────
+.tool-info-section {
+  padding: 3rem 0;
+  margin-top: 3rem;
 }
 
-.mt-tool-content__blocks {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  max-width: 800px;
-}
-
-.mt-tool-content__block {
+.info-card {
   padding: 1.5rem;
-}
-
-.mt-tool-content__block-title {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0 0 1rem;
-}
-
-.mt-tool-content__block-icon {
-  font-size: 1.5rem;
-}
-
-.mt-tool-content__block-body {
-  font-size: 1rem;
-  color: var(--text-primary);
-  line-height: 1.6;
-}
-
-.mt-tool-content__ad {
-  margin: 0;
-}
-
-// ── Steps ────────────────────────────────────────────────────
-.mt-tool-steps {
-  list-style: decimal;
-  padding-left: 1.5rem;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-
-  li {
-    line-height: 1.6;
-  }
-}
-
-// ── Formula ──────────────────────────────────────────────────
-.mt-tool-formula {
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 1rem 1.25rem;
-  color: var(--text-primary);
-  overflow-x: auto;
-}
-
-// ── Examples ─────────────────────────────────────────────────
-.mt-tool-examples {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.mt-tool-example {
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 1.25rem;
-  background: var(--bg-secondary);
+  height: 100%;
 
   &__title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+
+    i {
+      color: var(--primary-color);
+      font-size: 1.3rem;
+    }
+  }
+
+  &__body {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  &__text {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  &__examples {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  &__example {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.25rem;
+    background: var(--bg-secondary);
+  }
+
+  &__example-title {
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-primary);
     margin: 0 0 0.5rem;
   }
 
-  &__desc {
+  &__example-desc {
     font-size: 0.95rem;
     color: var(--text-secondary);
     margin: 0 0 1rem;
   }
 
-  &__io {
+  &__example-io {
     display: flex;
     gap: 1.25rem;
     flex-wrap: wrap;
   }
 
-  &__field {
+  &__example-field {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
@@ -242,7 +160,7 @@
     min-width: 200px;
   }
 
-  &__label {
+  &__example-label {
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-secondary);
@@ -250,7 +168,7 @@
     letter-spacing: 0.04em;
   }
 
-  &__value {
+  &__example-value {
     font-family: var(--font-mono);
     font-size: 0.95rem;
     color: var(--text-primary);
@@ -259,114 +177,74 @@
     border-radius: 4px;
     padding: 0.5rem 0.75rem;
   }
+
+  &__faq {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__faq-item {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  &__faq-question {
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      content: '+';
+      float: right;
+      font-size: 1.25rem;
+      line-height: 1;
+      color: var(--text-secondary);
+      transition: transform var(--transition-speed) ease;
+    }
+  }
+
+  &__faq-item[open] &__faq-question::after {
+    content: '−';
+  }
+
+  &__faq-answer {
+    padding: 0 1.25rem 1rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
 }
 
-// ── FAQ ──────────────────────────────────────────────────────
-.mt-tool-faq {
+// ── Usage list ───────────────────────────────────────────────
+.usage-list {
+  list-style: decimal;
+  padding-left: 1.5rem;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-}
+  gap: 0.5rem;
 
-.mt-tool-faq__item {
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.mt-tool-faq__question {
-  padding: 1rem 1.25rem;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  cursor: pointer;
-  list-style: none;
-  user-select: none;
-
-  &::-webkit-details-marker { display: none; }
-  &::after {
-    content: '+';
-    float: right;
-    font-size: 1.25rem;
-    line-height: 1;
+  li {
     color: var(--text-secondary);
-    transition: transform var(--transition-speed) ease;
+    line-height: 1.7;
+    padding: 0.5rem 0;
   }
-}
-
-.mt-tool-faq__item[open] .mt-tool-faq__question::after {
-  content: '−';
-}
-
-.mt-tool-faq__answer {
-  padding: 0 1.25rem 1rem;
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0;
-}
-
-// ── Related tools ────────────────────────────────────────────
-.mt-tool-related {
-  padding: 1.5rem 1rem 2rem;
-}
-
-.mt-tool-related__title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0 0 1.25rem;
-}
-
-.mt-tool-related__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
-
-.mt-tool-related__card {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  padding: 1rem;
-  text-decoration: none;
-  color: var(--text-primary);
-  transition: transform var(--transition-speed) ease,
-    box-shadow var(--transition-speed) ease;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-xl);
-  }
-
-  &-icon {
-    font-size: 1.25rem;
-    flex-shrink: 0;
-  }
-
-  &-name {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin: 0 0 0.25rem;
-  }
-
-  &-desc {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin: 0;
-    line-height: 1.6;
-  }
-}
-
-// ── Bottom ad ────────────────────────────────────────────────
-.mt-tool-bottom-ad {
-  padding: 0 1rem 1.5rem;
 }
 
 // ── Not found ────────────────────────────────────────────────
-.mt-tool-not-found {
-  padding: 4rem 1rem;
+.tool-not-found {
+  padding: 4rem 0;
 
   &__inner {
     text-align: center;
@@ -376,6 +254,7 @@
 
   &__icon {
     font-size: 3.5rem;
+    color: var(--text-secondary);
     display: block;
     margin-bottom: 1.25rem;
     opacity: 0.6;
@@ -415,7 +294,13 @@
 }
 
 // ── Loading ──────────────────────────────────────────────────
-.mt-tool-loading {
-  padding: 4rem 1rem;
+.tool-loading {
+  padding: 4rem 0;
   text-align: center;
+
+  &__text {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0;
+  }
 }
